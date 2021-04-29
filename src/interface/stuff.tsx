@@ -6,8 +6,19 @@ export const MyStuff: React.FC = () => {
 
   return (
     <div>
-      <div style={{ fontWeight: "bold", paddingBottom: 10 }}>
-        DOGE: {gameStore.dogecoin}
+      <div
+        style={{
+          fontWeight: "bold",
+          paddingBottom: 10,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <img
+          src="/assets/dogecoin-logo.png"
+          style={{ height: "1rem", paddingRight: "0.5rem" }}
+        />
+        {gameStore.dogecoin}
       </div>
       <div style={{ fontWeight: 500, paddingBottom: 10 }}>
         HASH RATE: {gameStore.hashRate}
