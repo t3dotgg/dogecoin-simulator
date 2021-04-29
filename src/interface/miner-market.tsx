@@ -23,7 +23,7 @@ export const MinerMarket: React.FC = () => {
         }}
         disabled={gameStore.usd < 50}
       >
-        Buy small miner (50 USD)
+        Buy small miner ($50)
       </button>
       <div style={{ paddingBottom: 5 }} />
       <button
@@ -32,7 +32,7 @@ export const MinerMarket: React.FC = () => {
         }}
         disabled={gameStore.usd < 200}
       >
-        Buy medium miner (200 USD)
+        Buy medium miner ($200)
       </button>
       <div style={{ paddingBottom: 5 }} />
       <button
@@ -41,7 +41,7 @@ export const MinerMarket: React.FC = () => {
         }}
         disabled={gameStore.usd < 500}
       >
-        Buy large miner (500 USD)
+        Buy large miner ($500)
       </button>
     </div>
   );
