@@ -28,3 +28,20 @@ button {
   cursor: pointer;
   background-color: transparent;
 }
+
+.gamescreen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+@media (max-width: 800px) {
+  .gamescreen {
+    flex-wrap: nowrap;
+    overflow-y: scroll;
+  }
+}

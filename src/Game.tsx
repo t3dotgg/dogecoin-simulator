@@ -1,18 +1,25 @@
 import React from "react";
+import { DevPanel } from "./dev/panel";
 import { useGameRunner } from "./engine/runtime";
 import { MinerMarket } from "./interface/miner-market";
+import { PhaseTwo } from "./interface/phase-two";
 import { MyStuff } from "./interface/stuff";
+import { AdForTheo } from "./interface/theo-ad";
 
 function Game() {
   useGameRunner();
 
   return (
-    <div style={{ padding: 10 }}>
-      <header className="App-header">
-        <MyStuff />
+    <div className="gamescreen">
+      <MyStuff />
 
-        <MinerMarket />
-      </header>
+      <MinerMarket />
+
+      <PhaseTwo />
+
+      <DevPanel />
+
+      <AdForTheo />
     </div>
   );
 }

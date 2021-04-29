@@ -11,7 +11,7 @@ export const MinerMarket: React.FC = () => {
         padding: 10,
         borderRadius: 8,
         maxWidth: 300,
-        marginTop: 50,
+        margin: 20,
       }}
     >
       <div style={{ fontWeight: "bold", color: "white", paddingBottom: 10 }}>
