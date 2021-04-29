@@ -2,11 +2,13 @@ import createStore from "zustand";
 import { GAME_STORAGE_KEY } from "./types";
 
 export type GameState = {
+  ticks: number;
+
+  // Currency
   dogecoin: number;
+  usd: number;
 
-  hashRate: number;
-  wattage: number;
-
+  // Purchases
   smallMiners: number;
   mediumMiners: number;
   largeMiners: number;
@@ -18,18 +20,19 @@ export type GameActions = {
   addCoin: (coin: number) => void;
   spendCoin: (coin: number) => void;
 
-  addSmallMiner: () => void;
-  addMediumMiner: () => void;
-  addLargeMiner: () => void;
+  addUSD: (USD: number) => void;
+  spendUSD: (USD: number) => void;
 
-  updateHashRate: () => void;
+  buySmallMiner: () => void;
+  buyMediumMiner: () => void;
+  buyLargeMiner: () => void;
 };
 
 const defaultState: GameState = {
-  dogecoin: 500,
+  ticks: 0,
 
-  hashRate: 0,
-  wattage: 0,
+  dogecoin: 0,
+  usd: 1000,
 
   smallMiners: 0,
   mediumMiners: 0,
@@ -52,18 +55,33 @@ export const useGameStore = createStore<GameStore>((set) => ({
 
   addCoin: (coin) => set((state) => ({ dogecoin: state.dogecoin + coin })),
   spendCoin: (coin) => set((state) => ({ dogecoin: state.dogecoin - coin })),
+  addUSD: (usd) => set((state) => ({ usd: state.usd + usd })),
+  spendUSD: (usd) => set((state) => ({ usd: state.usd - usd })),
+
   runTick: () =>
-    set((state) => ({ dogecoin: state.dogecoin + state.hashRate / 10 })),
+    set((state) => {
+      return {
+        dogecoin: state.dogecoin + calculateHashRate(state) / 10,
+        ticks: state.ticks + 1,
+      };
+    }),
 
   // Miner purchasing
-  addSmallMiner: () => set((state) => ({ smallMiners: state.smallMiners + 1 })),
-  addMediumMiner: () =>
-    set((state) => ({ mediumMiners: state.mediumMiners + 1 })),
-  addLargeMiner: () => set((state) => ({ largeMiners: state.largeMiners + 1 })),
-
-  // Hash rate updater
-  updateHashRate: () =>
-    set((state) => ({ hashRate: calculateHashRate(state) })),
+  buySmallMiner: () =>
+    set((state) => ({
+      smallMiners: state.smallMiners + 1,
+      usd: state.usd - 50,
+    })),
+  buyMediumMiner: () =>
+    set((state) => ({
+      mediumMiners: state.mediumMiners + 1,
+      usd: state.usd - 200,
+    })),
+  buyLargeMiner: () =>
+    set((state) => ({
+      largeMiners: state.largeMiners + 1,
+      usd: state.usd - 500,
+    })),
 }));
 
 const calculateHashRate = (store: GameState) => {
@@ -71,3 +89,6 @@ const calculateHashRate = (store: GameState) => {
     store.smallMiners * 1 + store.mediumMiners * 5 + store.largeMiners * 25
   );
 };
+
+export const useHashRate = () =>
+  useGameStore((state) => calculateHashRate(state));

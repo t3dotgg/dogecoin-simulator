@@ -15,39 +15,33 @@ export const MinerMarket: React.FC = () => {
       }}
     >
       <div style={{ fontWeight: "bold", color: "white", paddingBottom: 10 }}>
-        STORE
+        MINER MARKETPLACE
       </div>
       <button
         onClick={() => {
-          gameStore.addSmallMiner();
-          gameStore.spendCoin(50);
-          gameStore.updateHashRate();
+          gameStore.buySmallMiner();
         }}
-        disabled={gameStore.dogecoin < 50}
+        disabled={gameStore.usd < 50}
       >
-        Buy small miner (50 DOGE)
+        Buy small miner (50 USD)
       </button>
       <div style={{ paddingBottom: 5 }} />
       <button
         onClick={() => {
-          gameStore.addMediumMiner();
-          gameStore.spendCoin(200);
-          gameStore.updateHashRate();
+          gameStore.buyMediumMiner();
         }}
-        disabled={gameStore.dogecoin < 200}
+        disabled={gameStore.usd < 200}
       >
-        Buy medium miner (200 DOGE)
+        Buy medium miner (200 USD)
       </button>
       <div style={{ paddingBottom: 5 }} />
       <button
         onClick={() => {
-          gameStore.addLargeMiner();
-          gameStore.spendCoin(500);
-          gameStore.updateHashRate();
+          gameStore.buyLargeMiner();
         }}
-        disabled={gameStore.dogecoin < 500}
+        disabled={gameStore.usd < 500}
       >
-        Buy large miner (500 DOGE)
+        Buy large miner (500 USD)
       </button>
     </div>
   );
