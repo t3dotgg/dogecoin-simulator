@@ -17,8 +17,11 @@ const getRandomFluctuation = () => Math.random() * 500 - 250;
 export const useMarketStorage = create<MarketState & MarketActions>((set) => ({
   ...defaultState,
   setRandomDogePrice: () => {
-    set((state) => ({
-      dogePerUSD: state.dogePerUSD + getRandomFluctuation(),
-    }));
+    set((state) => {
+      const price = state.dogePerUSD + getRandomFluctuation();
+      return {
+        dogePerUSD: price > 0 ? price : 10,
+      };
+    });
   },
 }));
