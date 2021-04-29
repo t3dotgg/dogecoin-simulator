@@ -24,7 +24,9 @@ export const DevPanel: React.FC = () => {
       }}
     >
       <div style={{ paddingBottom: 10 }}>Dev panel</div>
-      <button onClick={() => gameStore.addCoin(10000)}>+10k</button>
+      <button onClick={() => gameStore.addCoin(10000)}>+10k doge</button>
+      <button onClick={() => gameStore.addCoin(100000)}>+100k doge</button>
+      <button onClick={() => gameStore.addUSD(10000)}>+10k USD</button>
       <button
         onClick={() => {
           localStorage.removeItem(GAME_STORAGE_KEY);

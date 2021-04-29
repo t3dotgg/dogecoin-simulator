@@ -9,7 +9,7 @@ export const useGameRunner = () => {
   useEffect(() => {
     const currentUpdater = setInterval(() => {
       gameStore.runTick();
-    }, 100);
+    }, 10);
 
     return () => clearInterval(currentUpdater);
   }, []);
@@ -20,7 +20,7 @@ export const useMarketRunner = () => {
   const ticks = useGameStore((state) => state.ticks);
 
   useEffect(() => {
-    if (ticks % 20 === 0) {
+    if (ticks % 200 === 0) {
       marketStore.setRandomDogePrice();
     }
   }, [ticks]);

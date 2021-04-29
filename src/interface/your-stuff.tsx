@@ -27,18 +27,16 @@ export const MyStuff: React.FC = () => {
       <div
         style={{
           fontWeight: "bold",
-          paddingBottom: 10,
           display: "flex",
           alignItems: "center",
         }}
       >
+        Dogecoin: {gameStore.dogecoin.toFixed(2)}
         <DogeIcon />
-        {gameStore.dogecoin.toFixed(5)}
       </div>
       <div
         style={{
           fontWeight: "bold",
-          paddingBottom: 10,
           display: "flex",
           alignItems: "center",
         }}
@@ -47,8 +45,6 @@ export const MyStuff: React.FC = () => {
       </div>
       <div
         style={{
-          fontWeight: 500,
-          paddingBottom: 10,
           display: "flex",
           alignItems: "center",
         }}
@@ -57,16 +53,15 @@ export const MyStuff: React.FC = () => {
         <DogeIcon /> per second
       </div>
 
-      <div style={{ fontWeight: "bold" }}>MINERS</div>
-      <div style={{ fontWeight: 500 }}>
-        Small Miners: {gameStore.smallMiners}
-      </div>
-      <div style={{ fontWeight: 500 }}>
-        Medium Miners: {gameStore.mediumMiners}
-      </div>
-      <div style={{ fontWeight: 500 }}>
-        Large Miners: {gameStore.largeMiners}
-      </div>
+      {gameStore.smallMiners > 0 && (
+        <div>Small Miners: {gameStore.smallMiners}</div>
+      )}
+      {gameStore.mediumMiners > 0 && (
+        <div>Medium Miners: {gameStore.mediumMiners}</div>
+      )}
+      {gameStore.largeMiners > 0 && (
+        <div>Large Miners: {gameStore.largeMiners}</div>
+      )}
     </div>
   );
 };
