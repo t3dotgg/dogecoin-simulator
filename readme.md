@@ -4,7 +4,7 @@ Heavily inspired by Universal Paperclip
 
 ## TODO
 
-- [ ] Local storage
+- [x] Local storage
 - [ ] Phases
 - [ ] BTC <-> USD
 - [ ] Debug panel
