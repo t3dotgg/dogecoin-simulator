@@ -32,7 +32,7 @@ const defaultState: GameState = {
   ticks: 0,
 
   dogecoin: 0,
-  usd: 1000,
+  usd: 100,
 
   smallMiners: 0,
   mediumMiners: 0,

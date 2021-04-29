@@ -9,14 +9,14 @@ export const useStoragePersist = () => {
     smallMiners,
     mediumMiners,
     largeMiners,
-    runTick,
+    ticks,
   ] = useGameStore((state) => [
     state.dogecoin,
     state.usd,
     state.smallMiners,
     state.mediumMiners,
     state.largeMiners,
-    state.runTick,
+    state.ticks,
   ]);
   React.useEffect(() => {
     localStorage.setItem(
@@ -27,7 +27,7 @@ export const useStoragePersist = () => {
         smallMiners,
         mediumMiners,
         largeMiners,
-        runTick,
+        ticks,
       })
     );
   }, [dogecoin]);
