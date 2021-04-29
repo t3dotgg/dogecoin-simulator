@@ -29,6 +29,11 @@ button {
   background-color: transparent;
 }
 
+button:disabled {
+  color: gray;
+  border-color: gray;
+}
+
 .gamescreen {
   position: relative;
   display: flex;

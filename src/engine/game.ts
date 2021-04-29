@@ -1,4 +1,5 @@
 import createStore from "zustand";
+import { GAME_STORAGE_KEY } from "./types";
 
 export type GameState = {
   dogecoin: number;
@@ -35,10 +36,19 @@ const defaultState: GameState = {
   largeMiners: 0,
 };
 
+const loadGame = () => {
+  const stored = localStorage.getItem(GAME_STORAGE_KEY);
+  if (stored) {
+    return JSON.parse(stored) as GameState;
+  }
+
+  return defaultState;
+};
+
 export type GameStore = GameState & GameActions;
 
 export const useGameStore = createStore<GameStore>((set) => ({
-  ...defaultState,
+  ...loadGame(),
 
   addCoin: (coin) => set((state) => ({ dogecoin: state.dogecoin + coin })),
   spendCoin: (coin) => set((state) => ({ dogecoin: state.dogecoin - coin })),

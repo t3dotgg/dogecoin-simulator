@@ -1,5 +1,6 @@
 import React from "react";
 import { useGameStore } from "../engine/game";
+import { GAME_STORAGE_KEY } from "../engine/types";
 
 export const DevPanel: React.FC = () => {
   const gameStore = useGameStore();
@@ -24,6 +25,14 @@ export const DevPanel: React.FC = () => {
     >
       <div style={{ paddingBottom: 10 }}>Dev panel</div>
       <button onClick={() => gameStore.addCoin(10000)}>+10k</button>
+      <button
+        onClick={() => {
+          localStorage.removeItem(GAME_STORAGE_KEY);
+          window.location.reload();
+        }}
+      >
+        Reset
+      </button>
     </div>
   );
 };
