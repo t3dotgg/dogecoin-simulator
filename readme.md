@@ -6,8 +6,8 @@ Heavily inspired by Universal Paperclip
 
 - [x] Local storage
 - [ ] Phases
-- [ ] BTC <-> USD
-- [ ] Debug panel
+- [x] DOGE <-> USD
+- [x] Debug panel
 - [ ] Events
 - [ ] Gambling
 
