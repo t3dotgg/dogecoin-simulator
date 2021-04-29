@@ -15,6 +15,11 @@ export const MyStuff: React.FC = () => {
     <div
       style={{
         fontFamily: "Roboto mono",
+        backgroundColor: "lightgray",
+        borderRadius: 8,
+        maxWidth: 300,
+        margin: 20,
+        padding: 10,
       }}
     >
       <div
