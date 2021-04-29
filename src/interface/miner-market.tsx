@@ -2,7 +2,16 @@ import React from "react";
 import { useGameStore } from "../engine/game";
 
 export const MinerMarket: React.FC = () => {
-  const gameStore = useGameStore();
+  const usd = useGameStore((state) => state.usd);
+  const [
+    buySmallMiner,
+    buyMediumMiner,
+    buyLargeMiner,
+  ] = useGameStore((state) => [
+    state.buySmallMiner,
+    state.buyMediumMiner,
+    state.buyLargeMiner,
+  ]);
 
   return (
     <div
@@ -19,27 +28,27 @@ export const MinerMarket: React.FC = () => {
       </div>
       <button
         onClick={() => {
-          gameStore.buySmallMiner();
+          buySmallMiner();
         }}
-        disabled={gameStore.usd < 50}
+        disabled={usd < 50}
       >
         Buy small miner ($50)
       </button>
       <div style={{ paddingBottom: 5 }} />
       <button
         onClick={() => {
-          gameStore.buyMediumMiner();
+          buyMediumMiner();
         }}
-        disabled={gameStore.usd < 200}
+        disabled={usd < 200}
       >
         Buy medium miner ($200)
       </button>
       <div style={{ paddingBottom: 5 }} />
       <button
         onClick={() => {
-          gameStore.buyLargeMiner();
+          buyLargeMiner();
         }}
-        disabled={gameStore.usd < 500}
+        disabled={usd < 500}
       >
         Buy large miner ($500)
       </button>
