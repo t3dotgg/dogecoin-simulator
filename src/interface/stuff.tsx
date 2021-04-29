@@ -12,7 +12,11 @@ export const MyStuff: React.FC = () => {
   const gameStore = useGameStore();
 
   return (
-    <div>
+    <div
+      style={{
+        fontFamily: "Roboto mono",
+      }}
+    >
       <div
         style={{
           fontWeight: "bold",
@@ -22,7 +26,7 @@ export const MyStuff: React.FC = () => {
         }}
       >
         <DogeIcon />
-        {gameStore.dogecoin}
+        {gameStore.dogecoin.toFixed(5)}
       </div>
       <div
         style={{
