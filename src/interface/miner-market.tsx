@@ -21,6 +21,7 @@ export const MinerMarket: React.FC = () => {
           gameStore.spendCoin(50);
           gameStore.updateHashRate();
         }}
+        disabled={gameStore.dogecoin < 50}
       >
         Buy small miner (50 DOGE)
       </button>
@@ -30,6 +31,7 @@ export const MinerMarket: React.FC = () => {
           gameStore.spendCoin(200);
           gameStore.updateHashRate();
         }}
+        disabled={gameStore.dogecoin < 200}
       >
         Buy medium miner (200 DOGE)
       </button>
@@ -39,6 +41,7 @@ export const MinerMarket: React.FC = () => {
           gameStore.spendCoin(500);
           gameStore.updateHashRate();
         }}
+        disabled={gameStore.dogecoin < 500}
       >
         Buy large miner (500 DOGE)
       </button>
