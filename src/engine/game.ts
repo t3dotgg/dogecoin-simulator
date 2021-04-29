@@ -86,7 +86,7 @@ export const useGameStore = createStore<GameStore>((set) => ({
 
 const calculateHashRate = (store: GameState) => {
   return (
-    store.smallMiners * 1 + store.mediumMiners * 5 + store.largeMiners * 25
+    store.smallMiners * 5 + store.mediumMiners * 15 + store.largeMiners * 50
   );
 };
 
