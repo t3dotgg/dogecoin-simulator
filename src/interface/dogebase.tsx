@@ -28,7 +28,7 @@ export const DogeBase: React.FC = () => {
           alignItems: "center",
         }}
       >
-        {marketStore.dogePerUSD.toFixed(5)}
+        {marketStore.dogePerUSD.toFixed(2)}
         <DogeIcon /> per USD
       </div>
       <button
@@ -38,7 +38,7 @@ export const DogeBase: React.FC = () => {
         }}
         disabled={gameStore.usd < 10}
       >
-        Buy $10 of doge ({(marketStore.dogePerUSD * 10).toFixed(5)})
+        Buy $10 of doge ({(marketStore.dogePerUSD * 10).toFixed(2)})
       </button>
       <button
         onClick={() => {

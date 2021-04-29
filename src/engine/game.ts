@@ -61,7 +61,7 @@ export const useGameStore = createStore<GameStore>((set) => ({
   runTick: () =>
     set((state) => {
       return {
-        dogecoin: state.dogecoin + calculateHashRate(state) / 10,
+        dogecoin: state.dogecoin + calculateHashRate(state) / 100,
         ticks: state.ticks + 1,
       };
     }),
@@ -86,7 +86,7 @@ export const useGameStore = createStore<GameStore>((set) => ({
 
 const calculateHashRate = (store: GameState) => {
   return (
-    store.smallMiners * 5 + store.mediumMiners * 15 + store.largeMiners * 50
+    store.smallMiners * 5 + store.mediumMiners * 25 + store.largeMiners * 70
   );
 };
 

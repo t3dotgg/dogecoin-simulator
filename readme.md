@@ -10,6 +10,7 @@ Heavily inspired by Universal Paperclip
 - [x] Debug panel
 - [ ] Events
 - [ ] Gambling
+- [ ] Better [number ticker](https://css-tricks.com/animating-number-counters/)
 
 ## Progression ideas
 
