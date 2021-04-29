@@ -4,7 +4,7 @@ import { useGameStore } from "../engine/game";
 export const PhaseTwo: React.FC = () => {
   const gameStore = useGameStore();
 
-  if (gameStore.dogecoin < 500000) return null;
+  if (gameStore.dogecoin < 100000) return null;
 
   return (
     <div
