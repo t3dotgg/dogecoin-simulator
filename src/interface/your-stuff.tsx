@@ -1,5 +1,5 @@
 import React from "react";
-import { useGameStore } from "../engine/game";
+import { useGameStore, useHashRate } from "../engine/game";
 
 const DogeIcon = () => (
   <img
@@ -10,6 +10,7 @@ const DogeIcon = () => (
 
 export const MyStuff: React.FC = () => {
   const gameStore = useGameStore();
+  const hashRate = useHashRate();
 
   return (
     <div
@@ -22,6 +23,7 @@ export const MyStuff: React.FC = () => {
         padding: 10,
       }}
     >
+      <div>YOUR STUFF</div>
       <div
         style={{
           fontWeight: "bold",
@@ -35,14 +37,23 @@ export const MyStuff: React.FC = () => {
       </div>
       <div
         style={{
+          fontWeight: "bold",
+          paddingBottom: 10,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        USD: ${gameStore.usd.toFixed(2)}
+      </div>
+      <div
+        style={{
           fontWeight: 500,
           paddingBottom: 10,
           display: "flex",
           alignItems: "center",
         }}
       >
-        HASH RATE: {gameStore.hashRate}{" "}
-        <div style={{ paddingRight: "0.2rem" }} />
+        HASH RATE: {hashRate} <div style={{ paddingRight: "0.2rem" }} />
         <DogeIcon /> per second
       </div>
 
