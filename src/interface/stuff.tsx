@@ -1,6 +1,13 @@
 import React from "react";
 import { useGameStore } from "../engine/game";
 
+const DogeIcon = () => (
+  <img
+    src="/assets/dogecoin-logo.png"
+    style={{ height: "1rem", paddingRight: "0.5rem" }}
+  />
+);
+
 export const MyStuff: React.FC = () => {
   const gameStore = useGameStore();
 
@@ -14,14 +21,20 @@ export const MyStuff: React.FC = () => {
           alignItems: "center",
         }}
       >
-        <img
-          src="/assets/dogecoin-logo.png"
-          style={{ height: "1rem", paddingRight: "0.5rem" }}
-        />
+        <DogeIcon />
         {gameStore.dogecoin}
       </div>
-      <div style={{ fontWeight: 500, paddingBottom: 10 }}>
-        HASH RATE: {gameStore.hashRate}
+      <div
+        style={{
+          fontWeight: 500,
+          paddingBottom: 10,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        HASH RATE: {gameStore.hashRate}{" "}
+        <div style={{ paddingRight: "0.2rem" }} />
+        <DogeIcon /> per second
       </div>
 
       <div style={{ fontWeight: "bold" }}>MINERS</div>

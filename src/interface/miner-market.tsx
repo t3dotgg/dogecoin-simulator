@@ -7,14 +7,16 @@ export const MinerMarket: React.FC = () => {
   return (
     <div
       style={{
-        backgroundColor: "lightgray",
+        backgroundColor: "darkgray",
         padding: 10,
         borderRadius: 8,
         maxWidth: 300,
         marginTop: 50,
       }}
     >
-      <div style={{ fontWeight: "bold" }}>STORE</div>
+      <div style={{ fontWeight: "bold", color: "white", paddingBottom: 10 }}>
+        STORE
+      </div>
       <button
         onClick={() => {
           gameStore.addSmallMiner();
@@ -25,6 +27,7 @@ export const MinerMarket: React.FC = () => {
       >
         Buy small miner (50 DOGE)
       </button>
+      <div style={{ paddingBottom: 5 }} />
       <button
         onClick={() => {
           gameStore.addMediumMiner();
@@ -35,6 +38,7 @@ export const MinerMarket: React.FC = () => {
       >
         Buy medium miner (200 DOGE)
       </button>
+      <div style={{ paddingBottom: 5 }} />
       <button
         onClick={() => {
           gameStore.addLargeMiner();
