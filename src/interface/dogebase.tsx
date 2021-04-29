@@ -43,11 +43,11 @@ export const DogeBase: React.FC = () => {
       <button
         onClick={() => {
           gameStore.spendCoin(100000);
-          gameStore.spendUSD(marketStore.dogePerUSD / 100000);
+          gameStore.spendUSD(100000 / marketStore.dogePerUSD);
         }}
         disabled={gameStore.dogecoin < 100000}
       >
-        Sell 100,000 doge (${(marketStore.dogePerUSD / 100000).toFixed(2)})
+        Sell 100,000 doge (${(100000 / marketStore.dogePerUSD).toFixed(2)})
       </button>
     </div>
   );
