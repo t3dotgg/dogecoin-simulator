@@ -1,4 +1,5 @@
 import React from "react";
+import { VictoryChart, VictoryLine } from "victory";
 import { DogeIcon } from "../common/dogeicon";
 import { useGameStore } from "../engine/game";
 import { useMarketStorage } from "../engine/market";
@@ -19,6 +20,20 @@ export const DogeBase: React.FC = () => {
     >
       <div style={{ fontWeight: "bold", color: "white", paddingBottom: 10 }}>
         DOGEBASE
+      </div>
+      <div style={{ background: "white", height: 100 }}>
+        <VictoryChart>
+          <VictoryLine
+            style={{
+              data: { stroke: "#FFD700" },
+            }}
+            data={marketStore.priceHistory
+              .map((d, i) => {
+                return { x: i, y: d };
+              })
+              .slice(Math.max(marketStore.priceHistory.length - 5, 1))}
+          />
+        </VictoryChart>
       </div>
       <div
         style={{
