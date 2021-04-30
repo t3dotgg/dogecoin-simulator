@@ -1,7 +1,8 @@
-import { defineConfig } from 'vite'
-import reactRefresh from '@vitejs/plugin-react-refresh'
+import { defineConfig } from "vite";
+import reactRefresh from "@vitejs/plugin-react-refresh";
 
-// https://vitejs.dev/config/
+import { minifyHtml } from "vite-plugin-html";
+
 export default defineConfig({
-  plugins: [reactRefresh()]
-})
+  plugins: [reactRefresh(), minifyHtml()],
+});
