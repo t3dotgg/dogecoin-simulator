@@ -36,5 +36,5 @@ export const useStoragePersist = () => {
         realEstate,
       })
     );
-  }, [dogecoin]);
+  }, [dogecoin, usd]);
 };
