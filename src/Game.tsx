@@ -4,7 +4,7 @@ import { useGameRunner, useMarketRunner } from "./engine/runtime";
 import { useStoragePersist } from "./engine/storage-persist";
 import { DogeBase } from "./interface/dogebase";
 import { MinerMarket } from "./interface/miner-market";
-import { PhaseTwo } from "./interface/phase-two";
+import { FactoryMarketplace } from "./interface/phase-two";
 import { MyStuff } from "./interface/your-stuff";
 import { AdForTheo } from "./interface/theo-ad";
 
@@ -21,7 +21,7 @@ function Game() {
 
       <MinerMarket />
 
-      <PhaseTwo />
+      <FactoryMarketplace />
 
       <DevPanel />
 

@@ -1,10 +1,11 @@
 import React from "react";
 import { useGameStore } from "../engine/game";
 
-export const PhaseTwo: React.FC = () => {
-  const gameStore = useGameStore();
+export const FactoryMarketplace: React.FC = () => {
+  const usd = useGameStore((state) => state.usd);
+  const phase = useGameStore((state) => state.phase);
 
-  if (gameStore.dogecoin < 100000) return null;
+  if (phase < 2) return null;
 
   return (
     <div
@@ -12,11 +13,19 @@ export const PhaseTwo: React.FC = () => {
         backgroundColor: "darkgray",
         padding: 10,
         borderRadius: 8,
-        width: 300,
+        maxWidth: 300,
         margin: 20,
       }}
     >
-      Phase Two (coming soon)
+      <div style={{ fontWeight: "bold", color: "white", paddingBottom: 10 }}>
+        DOGE ESTATE
+      </div>
+      <button onClick={() => {}} disabled={usd < 50000}>
+        Buy a server warehouse for mining ($50,000)
+      </button>
+      <button onClick={() => {}} disabled={usd < 20000}>
+        Buy a meme factory ($20,000)
+      </button>
     </div>
   );
 };
