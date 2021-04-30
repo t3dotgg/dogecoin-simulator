@@ -34,6 +34,7 @@ export const MyStuff: React.FC = () => {
         Dogecoin: {gameStore.dogecoin.toFixed(2)}
         <DogeIcon />
       </div>
+      <div>Phase: {gameStore.phase}</div>
       <div
         style={{
           fontWeight: "bold",

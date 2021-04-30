@@ -3,6 +3,7 @@ import { GAME_STORAGE_KEY } from "./types";
 
 export type GameState = {
   ticks: number;
+  phase: number;
 
   // Currency
   dogecoin: number;
@@ -31,6 +32,7 @@ export type GameActions = {
 
 const defaultState: GameState = {
   ticks: 0,
+  phase: 1,
 
   dogecoin: 0,
   usd: 100,
@@ -43,7 +45,8 @@ const defaultState: GameState = {
 const loadGame = () => {
   const stored = localStorage.getItem(GAME_STORAGE_KEY);
   if (stored) {
-    return JSON.parse(stored) as GameState;
+    const result = JSON.parse(stored) as Partial<GameState>;
+    return { ...defaultState, ...result };
   }
 
   return defaultState;
