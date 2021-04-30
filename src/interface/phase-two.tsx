@@ -14,7 +14,6 @@ export const PhaseTwo: React.FC = () => {
         borderRadius: 8,
         width: 300,
         margin: 20,
-        height: 400,
       }}
     >
       Phase Two (coming soon)

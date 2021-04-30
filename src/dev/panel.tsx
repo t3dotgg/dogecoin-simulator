@@ -31,6 +31,7 @@ export const DevPanel: React.FC = () => {
         onClick={() => {
           localStorage.removeItem(GAME_STORAGE_KEY);
           window.location.reload();
+          gameStore.resetToDefault();
         }}
       >
         Reset

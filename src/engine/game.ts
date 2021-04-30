@@ -16,6 +16,7 @@ export type GameState = {
 
 export type GameActions = {
   runTick: () => void;
+  resetToDefault: () => void;
 
   addCoin: (coin: number) => void;
   spendCoin: (coin: number) => void;
@@ -52,6 +53,8 @@ export type GameStore = GameState & GameActions;
 
 export const useGameStore = createStore<GameStore>((set) => ({
   ...loadGame(),
+
+  resetToDefault: () => set(defaultState),
 
   addCoin: (coin) => set((state) => ({ dogecoin: state.dogecoin + coin })),
   spendCoin: (coin) => set((state) => ({ dogecoin: state.dogecoin - coin })),
