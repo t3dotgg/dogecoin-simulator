@@ -48,5 +48,6 @@ button:disabled {
   .gamescreen {
     flex-wrap: nowrap;
     overflow-y: scroll;
+    padding-bottom: 5rem;
   }
 }
