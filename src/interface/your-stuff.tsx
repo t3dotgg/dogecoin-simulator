@@ -67,7 +67,7 @@ export const MyStuff: React.FC = () => {
         <>
           <div style={{ marginTop: 10, fontWeight: "bold" }}>Properties</div>
           {gameStore.realEstate.map((place) => (
-            <div>{place}</div>
+            <div key={place}>{place}</div>
           ))}
         </>
       )}

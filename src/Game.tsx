@@ -7,6 +7,7 @@ import { MinerMarket } from "./interface/miner-market";
 import { FactoryMarketplace } from "./interface/phase-two";
 import { MyStuff } from "./interface/your-stuff";
 import { AdForTheo } from "./interface/theo-ad";
+import { Backdrop } from "./special-effects/background";
 
 function Game() {
   useGameRunner();
@@ -26,6 +27,7 @@ function Game() {
       <DevPanel />
 
       <AdForTheo />
+      <Backdrop />
     </div>
   );
 }

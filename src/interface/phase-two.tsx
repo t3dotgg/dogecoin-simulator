@@ -9,7 +9,7 @@ export const FactoryMarketplace: React.FC = () => {
   const realEstate = useGameStore((state) => state.realEstate);
   const spendUSD = useGameStore((state) => state.spendUSD);
 
-  if (phase < 2) return null;
+  if (phase < 2 || realEstate.length >= 3) return null;
 
   return (
     <div
@@ -28,33 +28,33 @@ export const FactoryMarketplace: React.FC = () => {
         <button
           onClick={() => {
             acquireProperty(RealEstate.Server);
-            spendUSD(50000);
+            spendUSD(5000);
           }}
-          disabled={usd < 50000}
+          disabled={usd < 5000}
         >
-          Buy a server warehouse for mining ($50,000)
+          Buy a server warehouse for mining ($5,000)
         </button>
       )}
       {!realEstate.includes(RealEstate.MemeFactory) && (
         <button
           onClick={() => {
             acquireProperty(RealEstate.MemeFactory);
-            spendUSD(20000);
+            spendUSD(8000);
           }}
-          disabled={usd < 20000}
+          disabled={usd < 8000}
         >
-          Buy a meme factory ($20,000)
+          Buy a meme factory ($8,000)
         </button>
       )}
       {!realEstate.includes(RealEstate.Pool) && (
         <button
           onClick={() => {
             acquireProperty(RealEstate.Pool);
-            spendUSD(100000);
+            spendUSD(40);
           }}
-          disabled={usd < 100000}
+          disabled={usd < 40}
         >
-          Buy a pool ($100,000)
+          Buy a pool ($40,000)
         </button>
       )}
     </div>
