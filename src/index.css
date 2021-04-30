@@ -42,6 +42,7 @@ button:disabled {
   height: 100vh;
   overflow-y: hidden;
   overflow-x: hidden;
+  align-content: flex-start;
 }
 
 @media (max-width: 800px) {
