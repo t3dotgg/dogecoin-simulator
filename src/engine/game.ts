@@ -76,10 +76,14 @@ export const useGameStore = createStore<GameStore>((set) => ({
         dogecoin: state.dogecoin + calculateHashRate(state) / 100,
         ticks: state.ticks + 1,
       };
-      if (state.phase < 2 && state.dogecoin > 100000) {
+      if (state.phase < 2 && state.dogecoin >= 100000) {
         return { ...sharedUpdate, phase: 2 };
       }
-      if (state.phase < 3 && state.dogecoin > 1000000) {
+      if (
+        state.phase < 3 &&
+        state.dogecoin >= 500000 &&
+        state.realEstate.length >= 3
+      ) {
         return { ...sharedUpdate, phase: 3 };
       }
       if (state.phase < 4 && state.dogecoin > 10000000) {
