@@ -63,6 +63,14 @@ export const MyStuff: React.FC = () => {
       {gameStore.largeMiners > 0 && (
         <div>Large Miners: {gameStore.largeMiners}</div>
       )}
+      {gameStore.realEstate.length > 0 && (
+        <>
+          <div style={{ marginTop: 10, fontWeight: "bold" }}>Properties</div>
+          {gameStore.realEstate.map((place) => (
+            <div>{place}</div>
+          ))}
+        </>
+      )}
     </div>
   );
 };
