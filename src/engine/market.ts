@@ -9,14 +9,18 @@ type MarketState = {
 
 type MarketActions = {
   setRandomDogePrice: () => void;
+
+  resetMarketPrice: () => void;
 };
+
+const generateRandomPrice = () => Math.random() * 1000 + 1000;
 
 const defaultState: () => MarketState = () => {
   const storedLastPrice = localStorage.getItem(LAST_PRICE_KEY);
   return {
     dogePerUSD: storedLastPrice
       ? parseInt(storedLastPrice)
-      : Math.random() * 1000 + 1000,
+      : generateRandomPrice(),
     priceHistory: [],
   };
 };
@@ -42,4 +46,6 @@ export const useMarketStorage = create<MarketState & MarketActions>((set) => ({
       };
     });
   },
+  resetMarketPrice: () =>
+    set(() => ({ dogePerUSD: generateRandomPrice(), priceHistory: [] })),
 }));

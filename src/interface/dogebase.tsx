@@ -28,8 +28,38 @@ export const DogeBase: React.FC = () => {
           alignItems: "center",
         }}
       >
-        {marketStore.dogePerUSD.toFixed(2)}
-        <DogeIcon /> per USD
+        DOGE per USD:
+        <div
+          style={{
+            fontFamily: "Roboto Mono",
+            paddingLeft: "0.5rem",
+            display: "flex",
+            alignItems: "Center",
+          }}
+        >
+          {marketStore.dogePerUSD.toFixed(2)}
+          <DogeIcon />
+        </div>
+      </div>
+      <div
+        style={{
+          fontWeight: "bold",
+          paddingBottom: 10,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        USD per DOGE:
+        <div
+          style={{
+            fontFamily: "Roboto Mono",
+            paddingLeft: "0.5rem",
+            display: "flex",
+            alignItems: "Center",
+          }}
+        >
+          ${(1 / marketStore.dogePerUSD).toFixed(5)}
+        </div>
       </div>
       <button
         onClick={() => {
