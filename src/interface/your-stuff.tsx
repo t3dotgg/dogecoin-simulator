@@ -34,6 +34,7 @@ export const MyStuff: React.FC = () => {
         Dogecoin: {gameStore.dogecoin.toFixed(2)}
         <DogeIcon />
       </div>
+      <div>Phase: {gameStore.phase}</div>
       <div
         style={{
           fontWeight: "bold",
@@ -61,6 +62,14 @@ export const MyStuff: React.FC = () => {
       )}
       {gameStore.largeMiners > 0 && (
         <div>Large Miners: {gameStore.largeMiners}</div>
+      )}
+      {gameStore.realEstate.length > 0 && (
+        <>
+          <div style={{ marginTop: 10, fontWeight: "bold" }}>Properties</div>
+          {gameStore.realEstate.map((place) => (
+            <div key={place}>{place}</div>
+          ))}
+        </>
       )}
     </div>
   );
