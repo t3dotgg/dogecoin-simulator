@@ -32,7 +32,7 @@ export const useMarketStorage = create<MarketState & MarketActions>((set) => ({
   setRandomDogePrice: () => {
     set((state) => {
       const price = state.dogePerUSD + getRandomFluctuation(state.dogePerUSD);
-      const normalizedPrice = price > 0 ? price : 10;
+      const normalizedPrice = price > 1 ? price : 1;
 
       localStorage.setItem(LAST_PRICE_KEY, normalizedPrice.toString());
 
