@@ -1,6 +1,6 @@
 {
-  "name": "universaldoge",
-  "version": "0.0.0",
+  "name": "dogecoin-simulator",
+  "version": "0.2.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
