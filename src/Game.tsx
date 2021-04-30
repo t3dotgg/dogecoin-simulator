@@ -5,6 +5,7 @@ import { useStoragePersist } from "./engine/storage-persist";
 import { DogeBase } from "./interface/dogebase";
 import { MinerMarket } from "./interface/miner-market";
 import { FactoryMarketplace } from "./interface/phase-two";
+import { PhaseThree } from "./interface/phase-three";
 import { MyStuff } from "./interface/your-stuff";
 import { AdForTheo } from "./interface/theo-ad";
 import { Backdrop } from "./special-effects/background";
@@ -23,6 +24,8 @@ function Game() {
       <MinerMarket />
 
       <FactoryMarketplace />
+
+      <PhaseThree />
 
       <DevPanel />
 
