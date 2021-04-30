@@ -50,9 +50,9 @@ export const FactoryMarketplace: React.FC = () => {
         <button
           onClick={() => {
             acquireProperty(RealEstate.Pool);
-            spendUSD(40);
+            spendUSD(40000);
           }}
-          disabled={usd < 40}
+          disabled={usd < 40000}
         >
           Buy a pool ($40,000)
         </button>
