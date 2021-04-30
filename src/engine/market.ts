@@ -22,9 +22,9 @@ const defaultState: () => MarketState = () => {
 };
 
 const getRandomFluctuation = (currentVal: number) => {
-  const delta = currentVal / 2;
+  const delta = Math.random() * currentVal - currentVal / 2;
 
-  return Math.random() * currentVal - delta;
+  return delta + Math.random() * 2; // Add a slight boost to keep price from getting stuck too low
 };
 
 export const useMarketStorage = create<MarketState & MarketActions>((set) => ({
