@@ -1,8 +1,9 @@
 import createStore from "zustand";
-import { GAME_STORAGE_KEY } from "./types";
+import { GAME_STORAGE_KEY, RealEstate } from "./types";
 
 export type GameState = {
   ticks: number;
+  phase: number;
 
   // Currency
   dogecoin: number;
@@ -12,10 +13,13 @@ export type GameState = {
   smallMiners: number;
   mediumMiners: number;
   largeMiners: number;
+
+  realEstate: RealEstate[];
 };
 
 export type GameActions = {
   runTick: () => void;
+  resetToDefault: () => void;
 
   addCoin: (coin: number) => void;
   spendCoin: (coin: number) => void;
@@ -26,10 +30,13 @@ export type GameActions = {
   buySmallMiner: () => void;
   buyMediumMiner: () => void;
   buyLargeMiner: () => void;
+
+  acquireProperty: (property: RealEstate) => void;
 };
 
 const defaultState: GameState = {
   ticks: 0,
+  phase: 1,
 
   dogecoin: 0,
   usd: 100,
@@ -37,12 +44,15 @@ const defaultState: GameState = {
   smallMiners: 0,
   mediumMiners: 0,
   largeMiners: 0,
+
+  realEstate: [],
 };
 
 const loadGame = () => {
   const stored = localStorage.getItem(GAME_STORAGE_KEY);
   if (stored) {
-    return JSON.parse(stored) as GameState;
+    const result = JSON.parse(stored) as Partial<GameState>;
+    return { ...defaultState, ...result };
   }
 
   return defaultState;
@@ -53,6 +63,8 @@ export type GameStore = GameState & GameActions;
 export const useGameStore = createStore<GameStore>((set) => ({
   ...loadGame(),
 
+  resetToDefault: () => set(defaultState),
+
   addCoin: (coin) => set((state) => ({ dogecoin: state.dogecoin + coin })),
   spendCoin: (coin) => set((state) => ({ dogecoin: state.dogecoin - coin })),
   addUSD: (usd) => set((state) => ({ usd: state.usd + usd })),
@@ -60,9 +72,27 @@ export const useGameStore = createStore<GameStore>((set) => ({
 
   runTick: () =>
     set((state) => {
+      const sharedUpdate = {
+        dogecoin: state.dogecoin + calculateHashRate(state) / 100,
+        ticks: state.ticks + 1,
+      };
+      if (state.phase < 2 && state.dogecoin >= 100000) {
+        return { ...sharedUpdate, phase: 2 };
+      }
+      if (
+        state.phase < 3 &&
+        state.dogecoin >= 500000 &&
+        state.realEstate.length >= 3
+      ) {
+        return { ...sharedUpdate, phase: 3 };
+      }
+      if (state.phase < 4 && state.dogecoin > 10000000) {
+        return { ...sharedUpdate, phase: 4 };
+      }
       return {
         dogecoin: state.dogecoin + calculateHashRate(state) / 100,
         ticks: state.ticks + 1,
+        phase: state.phase,
       };
     }),
 
@@ -82,6 +112,10 @@ export const useGameStore = createStore<GameStore>((set) => ({
       largeMiners: state.largeMiners + 1,
       usd: state.usd - 500,
     })),
+
+  // Real Estate purchases
+  acquireProperty: (property) =>
+    set((state) => ({ realEstate: [...state.realEstate, property] })),
 }));
 
 const calculateHashRate = (store: GameState) => {
