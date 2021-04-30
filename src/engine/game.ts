@@ -120,7 +120,8 @@ export const useGameStore = createStore<GameStore>((set) => ({
 
 const calculateHashRate = (store: GameState) => {
   return (
-    store.smallMiners * 5 + store.mediumMiners * 25 + store.largeMiners * 70
+    (store.smallMiners * 5 + store.mediumMiners * 25 + store.largeMiners * 70) *
+    (store.realEstate.includes(RealEstate.Server) ? 1.3 : 1)
   );
 };
 
