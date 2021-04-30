@@ -5,8 +5,15 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "max-age=0, no-cache, no-store, must-revalidate"
-        }
+          "value": "no-cache, no-store, must-revalidate"
+        },
+
+        {
+          "key": "Pragma",
+          "value": "no-cache"
+        },
+        { "key": "Expires", "value": "Sat, 01 Jan 2000 00:00:00 GMT" },
+        { "key": "If-Modified-Since", "value": 0 }
       ]
     }
   ]
