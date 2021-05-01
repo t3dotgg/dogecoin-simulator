@@ -12,6 +12,6 @@ export const AdForTheo = () => (
       border: "2px solid black",
     }}
   >
-    Dumb idea made quick by <a href="https://twitter.com/t3dotgg">Theo</a>
+    A dumb game by <a href="https://twitter.com/t3dotgg">Theo</a>
   </div>
 );

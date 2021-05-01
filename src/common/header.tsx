@@ -8,8 +8,7 @@ export const Header: React.FC = (props) => (
       padding: 10,
       paddingBottom: 3,
       fontSize: 20,
-      borderBottom: "5px dotted black",
-      borderRadius: "255px 15px 225px 15px/15px 225px 20px 255px",
+      borderBottom: "2px solid black",
     }}
   >
     {props.children}

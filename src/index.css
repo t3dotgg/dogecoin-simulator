@@ -6,13 +6,19 @@ body {
 }
 
 button {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  /* Sizing and padding */
   display: inline-block;
   font-size: 1rem;
-  padding: 0.35em 1.2em;
-  border: 0.1em solid #ffffff;
-  margin: 0 0.3em 0.3em 0;
-  border-radius: 0.12em;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem 0.5rem 0;
+
+  /* Sketchy hand drawn styling */
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  font-style: italic;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+
+  /* Styling (ripped from some default button css thing) */
+  border: 2px solid #ffffff;
   box-sizing: border-box;
   text-decoration: none;
   font-weight: bold;
