@@ -48,10 +48,29 @@ button:disabled {
 }
 
 @media (max-width: 800px) {
+  .app {
+    height: 100vh;
+    height: stretch;
+    position: relative;
+    overflow: hidden;
+  }
   .gamescreen {
     flex-wrap: nowrap;
     overflow-y: scroll;
     padding-bottom: 5rem;
+    padding-top: 3rem;
+    height: -webkit-fill-available;
+    height: -moz-available;
+    align-items: center;
+  }
+}
+
+/*
+  Only set this flag in safari
+  Selector taken from: https://stackoverflow.com/questions/16348489/is-there-a-css-hack-for-safari-only-not-chrome
+*/
+@media not all and (min-resolution: 0.001dpcm) {
+  .app {
     height: -webkit-fill-available;
   }
 }
@@ -59,8 +78,8 @@ button:disabled {
 .panel {
   background-color: darkgray;
   border-radius: 8px;
-  max-width: 300px;
-  margin: 20px;
+  width: 300px;
+  margin: 10px;
   border: 2px solid black;
 }
 .my-panel {
