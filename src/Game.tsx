@@ -19,11 +19,19 @@ function Game() {
     <div className="app">
       <AdForTheo />
       <div className="gamescreen">
+        <div
+          className="onlyMobile"
+          style={{ paddingTop: "2.5rem", height: 0, width: 10 }}
+        />
         <MyStuff />
         <DogeBase />
         <MinerMarket />
         <FactoryMarketplace />
         <PhaseThree />
+        <div
+          className="onlyMobile"
+          style={{ paddingTop: "2.5rem", height: 0, width: 10 }}
+        />
       </div>
       {/* Extra stuff */}
       <DevPanel />
