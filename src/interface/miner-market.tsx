@@ -15,15 +15,7 @@ export const MinerMarket: React.FC = () => {
   ]);
 
   return (
-    <div
-      style={{
-        backgroundColor: "darkgray",
-        borderRadius: 8,
-        maxWidth: 300,
-        margin: 20,
-        position: "relative",
-      }}
-    >
+    <div className="panel">
       <Header>Doge Miner Marketplace</Header>
       <div
         style={{

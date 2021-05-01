@@ -19,14 +19,7 @@ export const FactoryMarketplace: React.FC = () => {
   if (phase < 2 || realEstate.length >= 3) return null;
 
   return (
-    <div
-      style={{
-        backgroundColor: "darkgray",
-        borderRadius: 8,
-        maxWidth: 300,
-        margin: 20,
-      }}
-    >
+    <div className="panel">
       <Header>Doge Estate</Header>
       <div
         style={{

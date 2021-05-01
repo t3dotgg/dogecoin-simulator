@@ -8,14 +8,7 @@ export const DogeBase: React.FC = () => {
   const gameStore = useGameStore();
 
   return (
-    <div
-      style={{
-        backgroundColor: "darkgray",
-        borderRadius: 8,
-        maxWidth: 300,
-        margin: 20,
-      }}
-    >
+    <div className="panel">
       <Header>Dogebase™</Header>
       <div
         style={{
