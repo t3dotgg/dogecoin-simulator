@@ -20,11 +20,11 @@ button {
     "Marker Felt", sans-serif;
 
   /* Styling (ripped from some default button css thing) */
-  border: 2px solid #ffffff;
+  border: 2px solid #000000;
   box-sizing: border-box;
   text-decoration: none;
   font-weight: bold;
-  color: #ffffff;
+  color: #000000;
   text-align: center;
   transition: all 0.2s;
   cursor: pointer;
