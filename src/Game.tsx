@@ -16,7 +16,7 @@ function Game() {
   useStoragePersist();
 
   return (
-    <div style={{ position: "relative", overflow: "hidden" }}>
+    <div className="app">
       <AdForTheo />
       <div className="gamescreen">
         <MyStuff />
