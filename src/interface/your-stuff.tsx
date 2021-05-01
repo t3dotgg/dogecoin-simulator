@@ -15,14 +15,7 @@ export const MyStuff: React.FC = () => {
   const hashRate = useHashRate();
 
   return (
-    <div
-      style={{
-        backgroundColor: "lightgray",
-        borderRadius: 8,
-        maxWidth: 300,
-        margin: 20,
-      }}
-    >
+    <div className="panel my-panel">
       <Header>Much Inventory</Header>
       <div
         style={{

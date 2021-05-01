@@ -56,6 +56,17 @@ button:disabled {
   }
 }
 
+.panel {
+  background-color: darkgray;
+  border-radius: 8px;
+  max-width: 300px;
+  margin: 20px;
+  border: 2px solid black;
+}
+.my-panel {
+  background-color: lightgray;
+}
+
 /* Override to enable scrolling when touching chart on mobile */
 .VictoryContainer {
   touch-action: auto !important;

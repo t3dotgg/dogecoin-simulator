@@ -1,4 +1,5 @@
 import React from "react";
+import { Header } from "../common/header";
 import { useGameStore } from "../engine/game";
 
 export const PhaseThree: React.FC = () => {
@@ -7,19 +8,9 @@ export const PhaseThree: React.FC = () => {
   if (phase < 3) return null;
 
   return (
-    <div
-      style={{
-        backgroundColor: "darkgray",
-        padding: 10,
-        borderRadius: 8,
-        maxWidth: 300,
-        margin: 20,
-      }}
-    >
-      <div style={{ fontWeight: "bold", color: "white", paddingBottom: 10 }}>
-        PHASE THREE (COMING SOON)
-      </div>
-      <div>
+    <div className="panel">
+      <Header>PHASE THREE (COMING SOON)</Header>
+      <div style={{ padding: 10 }}>
         Seriously though,, how did you make it this far so early? Go bug Theo to
         finish the next phase if you want to keep playing
       </div>
