@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React from "react";
 import { Header } from "../common/header";
 import { useGameStore, useHashRate } from "../engine/game";
 
@@ -36,11 +36,7 @@ export const MyStuff: React.FC = () => {
             alignItems: "center",
           }}
         >
-          Dogecoin:{" "}
-          <div
-            className="counter"
-            style={{ "--num": gameStore.dogecoin.toFixed(0) } as CSSProperties}
-          />
+          Dogecoin: <div className="odometer">{gameStore.dogecoin}</div>
           <DogeIcon />
         </div>
         <div
