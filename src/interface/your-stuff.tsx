@@ -1,6 +1,7 @@
 import React from "react";
 import { Header } from "../common/header";
 import { useGameStore, useHashRate } from "../engine/game";
+import "../odometer.css";
 
 const DogeIcon = () => (
   <img
@@ -36,7 +37,8 @@ export const MyStuff: React.FC = () => {
             alignItems: "center",
           }}
         >
-          Dogecoin: <div className="odometer">{gameStore.dogecoin}</div>
+          <div style={{ paddingRight: "0.5rem" }}>Dogecoin:</div>
+          <div className="odometer">{gameStore.dogecoin}</div>
           <DogeIcon />
         </div>
         <div
