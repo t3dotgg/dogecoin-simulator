@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Header } from "../common/header";
 import { useGameStore } from "../engine/game";
 
 export const MinerMarket: React.FC = () => {
@@ -17,45 +18,48 @@ export const MinerMarket: React.FC = () => {
     <div
       style={{
         backgroundColor: "darkgray",
-        padding: 10,
         borderRadius: 8,
         maxWidth: 300,
         margin: 20,
         position: "relative",
       }}
     >
-      <div style={{ fontWeight: "bold", color: "white", paddingBottom: 10 }}>
-        MINER MARKETPLACE
+      <Header>Doge Miner Marketplace</Header>
+      <div
+        style={{
+          padding: 10,
+        }}
+      >
+        <button
+          onClick={() => {
+            buySmallMiner();
+          }}
+          disabled={usd < 50}
+          data-tip="+5 hash rate"
+        >
+          Buy small miner ($50)
+        </button>
+        <div style={{ paddingBottom: 5 }} />
+        <button
+          onClick={() => {
+            buyMediumMiner();
+          }}
+          disabled={usd < 200}
+          data-tip="+25 hash rate"
+        >
+          Buy medium miner ($200)
+        </button>
+        <div style={{ paddingBottom: 5 }} />
+        <button
+          onClick={() => {
+            buyLargeMiner();
+          }}
+          disabled={usd < 500}
+          data-tip="+70 hash rate"
+        >
+          Buy large miner ($500)
+        </button>
       </div>
-      <button
-        onClick={() => {
-          buySmallMiner();
-        }}
-        disabled={usd < 50}
-        data-tip="+5 hash rate"
-      >
-        Buy small miner ($50)
-      </button>
-      <div style={{ paddingBottom: 5 }} />
-      <button
-        onClick={() => {
-          buyMediumMiner();
-        }}
-        disabled={usd < 200}
-        data-tip="+25 hash rate"
-      >
-        Buy medium miner ($200)
-      </button>
-      <div style={{ paddingBottom: 5 }} />
-      <button
-        onClick={() => {
-          buyLargeMiner();
-        }}
-        disabled={usd < 500}
-        data-tip="+70 hash rate"
-      >
-        Buy large miner ($500)
-      </button>
     </div>
   );
 };

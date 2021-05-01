@@ -1,4 +1,5 @@
 import React from "react";
+import { Header } from "../common/header";
 import { useGameStore, useHashRate } from "../engine/game";
 
 const DogeIcon = () => (
@@ -15,62 +16,66 @@ export const MyStuff: React.FC = () => {
   return (
     <div
       style={{
-        fontFamily: "Roboto mono",
         backgroundColor: "lightgray",
         borderRadius: 8,
         maxWidth: 300,
         margin: 20,
-        padding: 10,
       }}
     >
-      <div>YOUR STUFF</div>
+      <Header>Much Inventory</Header>
       <div
         style={{
-          fontWeight: "bold",
-          display: "flex",
-          alignItems: "center",
+          padding: 10,
+          fontFamily: "Comic Mono",
         }}
       >
-        Dogecoin: {gameStore.dogecoin.toFixed(2)}
-        <DogeIcon />
-      </div>
-      <div>Phase: {gameStore.phase}</div>
-      <div
-        style={{
-          fontWeight: "bold",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        USD: ${gameStore.usd.toFixed(2)}
-      </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        HASH RATE: {hashRate} <div style={{ paddingRight: "0.2rem" }} />
-        <DogeIcon /> per second
-      </div>
+        <div
+          style={{
+            fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          Dogecoin: {gameStore.dogecoin.toFixed(2)}
+          <DogeIcon />
+        </div>
+        <div
+          style={{
+            fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          USD: ${gameStore.usd.toFixed(2)}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          HASH RATE: {hashRate} <div style={{ paddingRight: "0.2rem" }} />
+          <DogeIcon /> per second
+        </div>
 
-      {gameStore.smallMiners > 0 && (
-        <div>Small Miners: {gameStore.smallMiners}</div>
-      )}
-      {gameStore.mediumMiners > 0 && (
-        <div>Medium Miners: {gameStore.mediumMiners}</div>
-      )}
-      {gameStore.largeMiners > 0 && (
-        <div>Large Miners: {gameStore.largeMiners}</div>
-      )}
-      {gameStore.realEstate.length > 0 && (
-        <>
-          <div style={{ marginTop: 10, fontWeight: "bold" }}>Properties</div>
-          {gameStore.realEstate.map((place) => (
-            <div key={place}>{place}</div>
-          ))}
-        </>
-      )}
+        {gameStore.smallMiners > 0 && (
+          <div>Small Miners: {gameStore.smallMiners}</div>
+        )}
+        {gameStore.mediumMiners > 0 && (
+          <div>Medium Miners: {gameStore.mediumMiners}</div>
+        )}
+        {gameStore.largeMiners > 0 && (
+          <div>Large Miners: {gameStore.largeMiners}</div>
+        )}
+        {gameStore.realEstate.length > 0 && (
+          <>
+            <div style={{ marginTop: 10, fontWeight: "bold" }}>Properties</div>
+            {gameStore.realEstate.map((place) => (
+              <div key={place}>{place}</div>
+            ))}
+          </>
+        )}
+      </div>
     </div>
   );
 };
