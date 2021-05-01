@@ -12,15 +12,10 @@ export const DogePriceChart: React.FC = () => {
           data: { stroke: "#FFD700", strokeWidth: 5 },
         }}
         data={marketStore.priceHistory
-          .slice(Math.max(marketStore.priceHistory.length - 5, 0))
+          .slice(Math.max(marketStore.priceHistory.length - 50, 0))
           .map((dogePerUSD, index) => {
             return { x: index, y: dogePerUSD };
           })}
-        animate={{
-          duration: 100,
-          onLoad: { duration: 100 },
-          easing: "bounce",
-        }}
       />
       <VictoryAxis
         style={{ tickLabels: { display: "none" }, axis: { strokeWidth: 2 } }}
