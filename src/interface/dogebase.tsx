@@ -3,6 +3,7 @@ import { DogeIcon } from "../common/dogeicon";
 import { Header } from "../common/header";
 import { useGameStore } from "../engine/game";
 import { useMarketStorage } from "../engine/market";
+import { DogePriceChart } from "../common/doge-chart";
 
 export const DogeBase: React.FC = () => {
   const gameStore = useGameStore();
@@ -47,7 +48,6 @@ export const DogeBase: React.FC = () => {
         <div
           style={{
             fontWeight: "bold",
-            paddingBottom: 10,
             display: "flex",
             alignItems: "center",
           }}
@@ -64,6 +64,7 @@ export const DogeBase: React.FC = () => {
             ${(1 / marketStore.dogePerUSD).toFixed(5)}
           </div>
         </div>
+        <DogePriceChart />
         <button
           onClick={() => {
             gameStore.addCoin(marketStore.dogePerUSD * 10);
