@@ -55,3 +55,17 @@ button:disabled {
     height: -webkit-fill-available;
   }
 }
+
+@property --num {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.counter {
+  transition: --num 0.1s;
+  counter-reset: num var(--num);
+}
+.counter::after {
+  content: counter(num);
+}
