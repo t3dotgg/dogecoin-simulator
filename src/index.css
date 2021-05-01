@@ -16,7 +16,8 @@ button {
   /* Sketchy hand drawn styling */
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   font-style: italic;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-family: "Comic Sans MS", "Comic Sans", "Comic Mono", "Chalkboard",
+    "Marker Felt", sans-serif;
 
   /* Styling (ripped from some default button css thing) */
   border: 2px solid #ffffff;
