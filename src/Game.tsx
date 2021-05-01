@@ -16,20 +16,17 @@ function Game() {
   useStoragePersist();
 
   return (
-    <div className="gamescreen">
-      <MyStuff />
-
-      <DogeBase />
-
-      <MinerMarket />
-
-      <FactoryMarketplace />
-
-      <PhaseThree />
-
-      <DevPanel />
-
+    <div style={{ position: "relative", overflow: "hidden" }}>
       <AdForTheo />
+      <div className="gamescreen">
+        <MyStuff />
+        <DogeBase />
+        <MinerMarket />
+        <FactoryMarketplace />
+        <PhaseThree />
+      </div>
+      {/* Extra stuff */}
+      <DevPanel />
       <Backdrop />
     </div>
   );
