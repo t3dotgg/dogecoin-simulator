@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  font-family: "Comic Sans MS", "Comic Sans", "Marker Felt", sans-serif;
+  font-family: "Comic Sans MS", "Comic Sans", "Comic Sans Mono", "Chalkboard",
+    "Marker Felt", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
