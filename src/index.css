@@ -55,3 +55,8 @@ button:disabled {
     height: -webkit-fill-available;
   }
 }
+
+/* Override to enable scrolling when touching chart on mobile */
+.VictoryContainer {
+  touch-action: auto !important;
+}
