@@ -52,5 +52,6 @@ button:disabled {
     flex-wrap: nowrap;
     overflow-y: scroll;
     padding-bottom: 5rem;
+    height: -webkit-fill-available;
   }
 }
