@@ -8,7 +8,7 @@ type MarketState = {
 };
 
 type MarketActions = {
-  setRandomDogePrice: () => void;
+  setRandomDogePrice: (phase: number) => void;
 
   resetMarketPrice: () => void;
 };
@@ -25,24 +25,35 @@ const defaultState: () => MarketState = () => {
   };
 };
 
-const getRandomFluctuation = (currentVal: number) => {
-  const delta = Math.random() * currentVal - currentVal / 2;
+// Current "wall" values used as a boost to keep prices from getting too good too early
+const wallByPhase = [0, 800, 400, 200, 100, 50, 25];
 
-  return delta + Math.random() * 2; // Add a slight boost to keep price from getting stuck too low
+const getRandomFluctuation = (currentVal: number, phase: number) => {
+  const moveRange = currentVal * 0.6;
+  const delta = Math.random() * moveRange - moveRange / 2;
+
+  const wall = wallByPhase[phase];
+
+  if (wall > currentVal) {
+    // Pricing is too good, artificially fuck it up
+    return delta + (Math.random() * wallByPhase[phase]) / 2;
+  }
+
+  return delta;
 };
 
 export const useMarketStorage = create<MarketState & MarketActions>((set) => ({
   ...defaultState(),
-  setRandomDogePrice: () => {
+  setRandomDogePrice: (phase: number) => {
     set((state) => {
-      const price = state.dogePerUSD + getRandomFluctuation(state.dogePerUSD);
-      const normalizedPrice = price > 1 ? price : 1;
+      const price =
+        state.dogePerUSD + getRandomFluctuation(state.dogePerUSD, phase);
 
-      localStorage.setItem(LAST_PRICE_KEY, normalizedPrice.toString());
+      localStorage.setItem(LAST_PRICE_KEY, price.toString());
 
       return {
-        dogePerUSD: normalizedPrice,
-        priceHistory: [...state.priceHistory, normalizedPrice],
+        dogePerUSD: price,
+        priceHistory: [...state.priceHistory, price],
       };
     });
   },
