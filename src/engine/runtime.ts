@@ -18,10 +18,11 @@ export const useGameRunner = () => {
 export const useMarketRunner = () => {
   const marketStore = useMarketStorage();
   const ticks = useGameStore((state) => state.ticks);
+  const phase = useGameStore((state) => state.phase);
 
   useEffect(() => {
     if (ticks % 200 === 0) {
-      marketStore.setRandomDogePrice();
+      marketStore.setRandomDogePrice(phase);
     }
   }, [ticks]);
 };
