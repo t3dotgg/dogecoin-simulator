@@ -5,6 +5,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+/* Border box is important */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 
 button {
   /* Sizing and padding */
@@ -47,6 +58,10 @@ button:disabled {
   align-content: flex-start;
 }
 
+.onlyMobile {
+  display: none;
+}
+
 @media (max-width: 800px) {
   .app {
     height: 100vh;
@@ -57,11 +72,11 @@ button:disabled {
   .gamescreen {
     flex-wrap: nowrap;
     overflow-y: scroll;
-    padding-bottom: 5rem;
-    padding-top: 3rem;
     height: -webkit-fill-available;
-    height: -moz-available;
     align-items: center;
+  }
+  .onlyMobile {
+    display: inherit;
   }
 }
 
