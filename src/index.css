@@ -62,7 +62,7 @@ button:disabled {
   display: none;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 650px) {
   .app {
     height: 100vh;
     height: stretch;
