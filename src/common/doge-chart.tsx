@@ -1,9 +1,9 @@
 import React from "react";
 import { VictoryAxis, VictoryChart, VictoryLine } from "victory";
-import { useMarketStorage } from "../engine/market";
+import { useGameStore } from "../engine/game";
 
 export const DogePriceChart: React.FC = () => {
-  const marketStore = useMarketStorage();
+  const marketStore = useGameStore();
 
   return (
     <VictoryChart>

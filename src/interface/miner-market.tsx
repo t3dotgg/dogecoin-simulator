@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Header } from "../common/header";
 import { useGameStore } from "../engine/game";
 

@@ -1,7 +1,14 @@
 import createStore from "zustand";
+import {
+  MarketState,
+  defaultMarketState,
+  getRandomFluctuation,
+  generateRandomPrice,
+  MarketActions,
+} from "./market";
 import { GAME_STORAGE_KEY, RealEstate } from "./types";
 
-export type GameState = {
+type CoreGameState = {
   ticks: number;
   phase: number;
 
@@ -16,6 +23,8 @@ export type GameState = {
 
   realEstate: RealEstate[];
 };
+
+export type GameState = CoreGameState & MarketState;
 
 export type GameActions = {
   runTick: () => void;
@@ -46,6 +55,9 @@ const defaultState: GameState = {
   largeMiners: 0,
 
   realEstate: [],
+
+  // Market stuff
+  ...defaultMarketState(),
 };
 
 const loadGame = () => {
@@ -58,7 +70,7 @@ const loadGame = () => {
   return defaultState;
 };
 
-export type GameStore = GameState & GameActions;
+export type GameStore = GameState & GameActions & MarketActions;
 
 export const useGameStore = createStore<GameStore>((set) => ({
   ...loadGame(),
@@ -116,6 +128,21 @@ export const useGameStore = createStore<GameStore>((set) => ({
   // Real Estate purchases
   acquireProperty: (property) =>
     set((state) => ({ realEstate: [...state.realEstate, property] })),
+
+  // Market bs
+  setRandomDogePrice: (phase: number) => {
+    set((state) => {
+      const price =
+        state.dogePerUSD + getRandomFluctuation(state.dogePerUSD, phase);
+
+      return {
+        dogePerUSD: price,
+        priceHistory: [...state.priceHistory, price],
+      };
+    });
+  },
+  resetMarketPrice: () =>
+    set(() => ({ dogePerUSD: generateRandomPrice(), priceHistory: [] })),
 }));
 
 const calculateHashRate = (store: GameState) => {

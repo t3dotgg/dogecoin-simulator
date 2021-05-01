@@ -1,6 +1,5 @@
 import { useGameStore } from "./game";
 import { useEffect } from "react";
-import { useMarketStorage } from "./market";
 
 export const useGameRunner = () => {
   const gameStore = useGameStore();
@@ -16,13 +15,13 @@ export const useGameRunner = () => {
 };
 
 export const useMarketRunner = () => {
-  const marketStore = useMarketStorage();
+  const setRandomDogePrice = useGameStore((state) => state.setRandomDogePrice);
   const ticks = useGameStore((state) => state.ticks);
   const phase = useGameStore((state) => state.phase);
 
   useEffect(() => {
     if (ticks % 200 === 0) {
-      marketStore.setRandomDogePrice(phase);
+      setRandomDogePrice(phase);
     }
   }, [ticks]);
 };
