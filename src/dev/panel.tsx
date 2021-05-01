@@ -1,11 +1,9 @@
 import React from "react";
 import { useGameStore } from "../engine/game";
-import { useMarketStorage } from "../engine/market";
 import { GAME_STORAGE_KEY } from "../engine/types";
 
 export const DevPanel: React.FC = () => {
   const gameStore = useGameStore();
-  const marketStore = useMarketStorage();
 
   const urlParams = new URLSearchParams(window.location.search);
   const devMode = urlParams.get("devmode");
@@ -34,7 +32,7 @@ export const DevPanel: React.FC = () => {
           localStorage.removeItem(GAME_STORAGE_KEY);
           window.location.reload();
           gameStore.resetToDefault();
-          marketStore.resetMarketPrice();
+          gameStore.resetMarketPrice();
         }}
       >
         Reset
