@@ -27,11 +27,11 @@ function Game() {
         />
         <MyStuff />
         <DogeBase />
+        <TwitterFeed />
+        <DogeHQ />
         <MinerMarket />
         <FactoryMarketplace />
-        <DogeHQ />
         <PhaseThree />
-        <TwitterFeed />
         <div
           className="onlyMobile"
           style={{ paddingTop: "2.5rem", height: 0, width: 10 }}
