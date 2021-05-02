@@ -7,4 +7,6 @@ export const GeneratedTweets: string[] = [
   "TO THE MOON!!1!",
   "DOGEFATHER",
   "yo @elonmusk check your dms",
+  "bitcoin who?",
+  "s/o @t3dotgg for making this dope game",
 ];
