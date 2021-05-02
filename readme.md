@@ -18,6 +18,8 @@ Heavily inspired by Universal Paperclip
   - Better mobile support (maybe ? button next to text buttons)
   - Tie closer to button (make custom button component)
 - [x] Better [number ticker](https://css-tricks.com/animating-number-counters/)
+- [ ] "About" page with callouts to open source packages used
+- [ ] "Reset" button
 
 ## Progression ideas
 
