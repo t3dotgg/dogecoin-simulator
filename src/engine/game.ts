@@ -144,7 +144,12 @@ export const useGameStore = createStore<GameStore>((set) => ({
 
       return {
         dogePerUSD: price,
-        priceHistory: [...state.priceHistory, price],
+        priceHistory: [
+          ...state.priceHistory.slice(
+            Math.max(state.priceHistory.length - 50, 0)
+          ),
+          price,
+        ],
       };
     });
   },
