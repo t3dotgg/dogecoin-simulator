@@ -22,23 +22,17 @@ export const DevPanel: React.FC = () => {
         backgroundColor: "red",
         display: "flex",
         flexDirection: "column",
-        color: "white",
       }}
     >
-      <div style={{ paddingBottom: 10 }}>Dev panel</div>
-      <button onClick={() => gameStore.addCoin(10000)}>+10k doge</button>
+      <div style={{ paddingBottom: 10, fontWeight: "bold" }}>Data</div>
+      <div>Phase: {gameStore.phase}</div>
+      <div>Luck: {gameStore.luck}</div>
+      <div style={{ paddingBottom: 10, paddingTop: 10, fontWeight: "bold" }}>
+        Cheats
+      </div>
       <button onClick={() => gameStore.addCoin(100000)}>+100k doge</button>
+      <button onClick={() => gameStore.addCoin(10000000)}>+10m doge</button>
       <button onClick={() => gameStore.addUSD(10000)}>+10k USD</button>
-      <button
-        onClick={() => {
-          localStorage.removeItem(GAME_STORAGE_KEY);
-          window.location.reload();
-          gameStore.resetToDefault();
-          gameStore.resetMarketPrice();
-        }}
-      >
-        Reset
-      </button>
     </div>
   );
 };

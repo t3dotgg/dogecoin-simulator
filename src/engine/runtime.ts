@@ -17,11 +17,10 @@ export const useGameRunner = () => {
 export const useMarketRunner = () => {
   const setRandomDogePrice = useGameStore((state) => state.setRandomDogePrice);
   const ticks = useGameStore((state) => state.ticks);
-  const phase = useGameStore((state) => state.phase);
 
   useEffect(() => {
     if (ticks % 20 === 0) {
-      setRandomDogePrice(phase);
+      setRandomDogePrice();
     }
   }, [ticks]);
 };
