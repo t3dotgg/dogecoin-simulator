@@ -212,7 +212,7 @@ export const useGameStore = createStore<GameStore>((set) => ({
         state.luck === 0 ? 0 : state.luck > 0 ? state.luck - 1 : state.luck + 1;
 
       const history = state.priceHistory.slice(
-        Math.max(state.priceHistory.length - 50, 0)
+        Math.max(state.priceHistory.length - 30, 0)
       );
       return {
         dogePerUSD: price,
