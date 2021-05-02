@@ -28,6 +28,7 @@ type CoreGameState = {
 
   // Stats
   tweetCount: number;
+  twitterFollowers: number;
 };
 
 export type GameState = CoreGameState & MarketState;
@@ -45,6 +46,7 @@ export type GameActions = {
   addToLuck: (luck: number) => void;
 
   addToTweetCount: (tweetCount: number) => void;
+  sendTweet: () => void;
 
   buySmallMiner: () => void;
   buyMediumMiner: () => void;
@@ -69,6 +71,7 @@ const defaultState: GameState = {
   realEstate: [],
 
   tweetCount: 0,
+  twitterFollowers: 0,
 
   // Market stuff
   ...defaultMarketState(),
@@ -143,6 +146,34 @@ export const useGameStore = createStore<GameStore>((set) => ({
       largeMiners: state.largeMiners + 1,
       usd: state.usd - 500,
     })),
+
+  sendTweet: () => {
+    set((state) => {
+      const coin = state.dogecoin - 50000;
+      const luckyNumber = Math.random();
+
+      let luck = state.luck;
+      let followers = state.twitterFollowers;
+
+      if (luckyNumber > 0.7) {
+        luck += 1;
+        followers = Math.floor(
+          followers + Math.random() * 0.1 * followers + Math.random() * 10
+        );
+      }
+      if (luckyNumber < 0.2) {
+        luck -= 1;
+        followers = Math.floor(followers - Math.random() * 0.05 * followers);
+      }
+
+      return {
+        dogecoin: coin,
+        luck,
+        twitterFollowers: followers,
+        tweetCount: state.tweetCount + 1,
+      };
+    });
+  },
 
   // Real Estate purchases
   acquireProperty: (property) =>
