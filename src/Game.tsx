@@ -10,6 +10,7 @@ import { MyStuff } from "./interface/your-stuff";
 import { AdForTheo } from "./interface/theo-ad";
 import { Backdrop } from "./special-effects/background";
 import { DogeHQ } from "./interface/doge-hq";
+import { TwitterFeed } from "./interface/twitter";
 
 function Game() {
   useGameRunner();
@@ -30,6 +31,7 @@ function Game() {
         <FactoryMarketplace />
         <DogeHQ />
         <PhaseThree />
+        <TwitterFeed />
         <div
           className="onlyMobile"
           style={{ paddingTop: "2.5rem", height: 0, width: 10 }}

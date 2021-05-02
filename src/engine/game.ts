@@ -6,7 +6,8 @@ import {
   generateRandomPrice,
   MarketActions,
 } from "./market";
-import { GAME_STORAGE_KEY, RealEstate } from "./types";
+import { GAME_STORAGE_KEY, RealEstate, Unlocks } from "./types";
+import { GeneratedTweets } from "../data/tweets";
 
 type CoreGameState = {
   ticks: number;
@@ -25,10 +26,12 @@ type CoreGameState = {
 
   // Inventory
   realEstate: RealEstate[];
+  unlocks: Unlocks[];
 
-  // Stats
+  // Twitter
   tweetCount: number;
   twitterFollowers: number;
+  tweetIDs: number[];
 };
 
 export type GameState = CoreGameState & MarketState;
@@ -53,6 +56,7 @@ export type GameActions = {
   buyLargeMiner: () => void;
 
   acquireProperty: (property: RealEstate) => void;
+  unlockSomething: (unlock: Unlocks) => void;
 };
 
 const defaultState: GameState = {
@@ -69,9 +73,11 @@ const defaultState: GameState = {
   largeMiners: 0,
 
   realEstate: [],
+  unlocks: [],
 
   tweetCount: 0,
   twitterFollowers: 0,
+  tweetIDs: [],
 
   // Market stuff
   ...defaultMarketState(),
@@ -156,21 +162,30 @@ export const useGameStore = createStore<GameStore>((set) => ({
       let followers = state.twitterFollowers;
 
       if (luckyNumber > 0.7) {
-        luck += 1;
         followers = Math.floor(
           followers + Math.random() * 0.1 * followers + Math.random() * 10
         );
+        if (followers > 100) {
+          luck += 1;
+        }
       }
       if (luckyNumber < 0.2) {
-        luck -= 1;
         followers = Math.floor(followers - Math.random() * 0.05 * followers);
+        if (followers > 100) {
+          luck -= 1;
+        }
       }
+      const tweetIDs = [
+        Math.floor(Math.random() * GeneratedTweets.length),
+        ...state.tweetIDs,
+      ];
 
       return {
         dogecoin: coin,
         luck,
         twitterFollowers: followers,
         tweetCount: state.tweetCount + 1,
+        tweetIDs,
       };
     });
   },
@@ -178,6 +193,9 @@ export const useGameStore = createStore<GameStore>((set) => ({
   // Real Estate purchases
   acquireProperty: (property) =>
     set((state) => ({ realEstate: [...state.realEstate, property] })),
+  // Other unlocks
+  unlockSomething: (newUnlock) =>
+    set((state) => ({ unlocks: [...state.unlocks, newUnlock] })),
 
   // Market bs
   setRandomDogePrice: () => {

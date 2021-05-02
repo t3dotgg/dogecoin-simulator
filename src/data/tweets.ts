@@ -1,4 +1,4 @@
-export const tweets: string[] = [
+export const GeneratedTweets: string[] = [
   "Poll: Is Dogecoin a doge-based currency or a currency-based doge?",
   "wow",
   "dumb doge tweet #3",
