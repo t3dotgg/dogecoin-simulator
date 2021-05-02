@@ -1,4 +1,5 @@
 import React from "react";
+import { CountUp } from "countup.js";
 import { usePrevious } from "./utils/use-previous";
 
 export const DogeCounter: React.FC<{ dogecoin: number }> = ({ dogecoin }) => {
@@ -9,7 +10,10 @@ export const DogeCounter: React.FC<{ dogecoin: number }> = ({ dogecoin }) => {
       counter.update(dogecoin);
       return;
     }
-    const newCounter = new CountUp("doge-counter", dogecoin);
+    const newCounter = new CountUp("doge-counter", dogecoin, {
+      startVal: dogecoin,
+      duration: 100,
+    });
 
     updateCounter(newCounter);
   }, [dogecoin]);
