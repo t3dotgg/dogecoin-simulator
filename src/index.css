@@ -125,3 +125,7 @@ button:disabled {
     color: red;
   }
 }
+
+img {
+  transition: opacity 2s linear;
+}

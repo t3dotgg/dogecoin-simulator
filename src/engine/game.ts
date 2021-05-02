@@ -23,7 +23,11 @@ type CoreGameState = {
   mediumMiners: number;
   largeMiners: number;
 
+  // Inventory
   realEstate: RealEstate[];
+
+  // Stats
+  tweetCount: number;
 };
 
 export type GameState = CoreGameState & MarketState;
@@ -39,6 +43,8 @@ export type GameActions = {
   spendUSD: (USD: number) => void;
 
   addToLuck: (luck: number) => void;
+
+  addToTweetCount: (tweetCount: number) => void;
 
   buySmallMiner: () => void;
   buyMediumMiner: () => void;
@@ -61,6 +67,8 @@ const defaultState: GameState = {
   largeMiners: 0,
 
   realEstate: [],
+
+  tweetCount: 0,
 
   // Market stuff
   ...defaultMarketState(),
@@ -89,6 +97,8 @@ export const useGameStore = createStore<GameStore>((set) => ({
   spendUSD: (usd) => set((state) => ({ usd: state.usd - usd })),
 
   addToLuck: (luck) => set((state) => ({ luck: state.luck + luck })),
+  addToTweetCount: (tweets) =>
+    set((state) => ({ tweetCount: state.tweetCount + tweets })),
 
   runTick: () =>
     set((state) => {
