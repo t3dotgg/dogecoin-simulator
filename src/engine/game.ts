@@ -86,7 +86,7 @@ export const useGameStore = createStore<GameStore>((set) => ({
 
   runTick: () =>
     set((state) => {
-      const newDogeCount = state.dogecoin + calculateHashRate(state) / 100;
+      const newDogeCount = state.dogecoin + calculateHashRate(state) / 10;
       const sharedUpdate = {
         dogecoin: newDogeCount,
         ticks: state.ticks + 1,
