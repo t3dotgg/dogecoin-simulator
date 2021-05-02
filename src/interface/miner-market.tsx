@@ -4,6 +4,7 @@ import { useGameStore } from "../engine/game";
 
 export const MinerMarket: React.FC = () => {
   const usd = useGameStore((state) => state.usd);
+  const isEnabled = useGameStore((state) => state.maxDogecoin > 10000);
   const [
     buySmallMiner,
     buyMediumMiner,
@@ -13,6 +14,8 @@ export const MinerMarket: React.FC = () => {
     state.buyMediumMiner,
     state.buyLargeMiner,
   ]);
+
+  if (!isEnabled) return null;
 
   return (
     <div className="panel">

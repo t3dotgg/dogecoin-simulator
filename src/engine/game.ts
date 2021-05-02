@@ -49,7 +49,7 @@ const defaultState: GameState = {
   phase: 1,
 
   dogecoin: 0,
-  usd: 100,
+  usd: 200,
   maxDogecoin: 0,
 
   smallMiners: 0,
@@ -92,12 +92,12 @@ export const useGameStore = createStore<GameStore>((set) => ({
         ticks: state.ticks + 1,
         maxDogecoin: Math.max(newDogeCount, state.maxDogecoin),
       };
-      if (state.phase < 2 && state.dogecoin >= 100000) {
+      if (state.phase < 2 && state.dogecoin >= 500000) {
         return { ...sharedUpdate, phase: 2 };
       }
       if (
         state.phase < 3 &&
-        state.dogecoin >= 500000 &&
+        state.dogecoin >= 1000000 &&
         state.realEstate.length >= 3
       ) {
         return { ...sharedUpdate, phase: 3 };
@@ -136,7 +136,11 @@ export const useGameStore = createStore<GameStore>((set) => ({
   setRandomDogePrice: (phase: number) => {
     set((state) => {
       const price =
-        state.dogePerUSD + getRandomFluctuation(state.dogePerUSD, phase);
+        state.dogePerUSD +
+        getRandomFluctuation(state.dogePerUSD, phase, {
+          // Enable ticks after 10 minutes
+          isLuckEnabled: state.phase > 1,
+        });
 
       return {
         dogePerUSD: price,

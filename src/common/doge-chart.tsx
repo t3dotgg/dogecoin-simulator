@@ -2,11 +2,11 @@ import React from "react";
 import { VictoryAxis, VictoryChart, VictoryLine } from "victory";
 import { useGameStore } from "../engine/game";
 
-export const DogePriceChart: React.FC = () => {
+export const DogePriceChart: React.FC<{ width?: number }> = (props) => {
   const marketStore = useGameStore();
 
   return (
-    <VictoryChart>
+    <VictoryChart width={props.width}>
       <VictoryLine
         style={{
           data: { stroke: "#FFD700", strokeWidth: 5 },
