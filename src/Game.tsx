@@ -10,7 +10,6 @@ import { MyStuff } from "./interface/your-stuff";
 import { AdForTheo } from "./interface/theo-ad";
 import { Backdrop } from "./special-effects/background";
 import { DogeHQ } from "./interface/doge-hq";
-import { DogePriceChart } from "./common/doge-chart";
 
 function Game() {
   useGameRunner();
