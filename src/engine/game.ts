@@ -15,6 +15,7 @@ type CoreGameState = {
   // Currency
   dogecoin: number;
   usd: number;
+  maxDogecoin: number; // Peak dogecoin had thusfar (pseudo-progress marker)
 
   // Purchases
   smallMiners: number;
@@ -49,6 +50,7 @@ const defaultState: GameState = {
 
   dogecoin: 0,
   usd: 100,
+  maxDogecoin: 0,
 
   smallMiners: 0,
   mediumMiners: 0,
@@ -84,9 +86,11 @@ export const useGameStore = createStore<GameStore>((set) => ({
 
   runTick: () =>
     set((state) => {
+      const newDogeCount = state.dogecoin + calculateHashRate(state) / 100;
       const sharedUpdate = {
-        dogecoin: state.dogecoin + calculateHashRate(state) / 100,
+        dogecoin: newDogeCount,
         ticks: state.ticks + 1,
+        maxDogecoin: Math.max(newDogeCount, state.maxDogecoin),
       };
       if (state.phase < 2 && state.dogecoin >= 100000) {
         return { ...sharedUpdate, phase: 2 };
@@ -102,8 +106,7 @@ export const useGameStore = createStore<GameStore>((set) => ({
         return { ...sharedUpdate, phase: 4 };
       }
       return {
-        dogecoin: state.dogecoin + calculateHashRate(state) / 100,
-        ticks: state.ticks + 1,
+        ...sharedUpdate,
         phase: state.phase,
       };
     }),

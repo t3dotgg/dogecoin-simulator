@@ -3,7 +3,7 @@ import { useGameStore } from "../engine/game";
 import { RealEstate } from "../engine/types";
 
 export const Backdrop: React.FC = () => {
-  const doge = useGameStore((state) => state.dogecoin);
+  const doge = useGameStore((state) => state.maxDogecoin);
   const hasPool = useGameStore((state) =>
     state.realEstate.includes(RealEstate.Pool)
   );

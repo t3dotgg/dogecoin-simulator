@@ -1,6 +1,5 @@
 import React from "react";
 import { CountUp } from "countup.js";
-import { usePrevious } from "./utils/use-previous";
 
 export const DogeCounter: React.FC<{ dogecoin: number }> = ({ dogecoin }) => {
   const [counter, updateCounter] = React.useState<CountUp | undefined>();
