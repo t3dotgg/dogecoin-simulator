@@ -27,7 +27,7 @@ export const defaultMarketState: () => MarketState = () => {
 const wallByPhase = [0, 800, 400, 200, 100, 50, 25];
 
 export const getRandomFluctuation = (currentVal: number, phase: number) => {
-  const moveRange = currentVal * 0.6;
+  const moveRange = Math.random() > 0.95 ? currentVal * 1.5 : currentVal * 0.1;
   const delta = Math.random() * moveRange - moveRange / 2;
 
   const wall = wallByPhase[phase];
