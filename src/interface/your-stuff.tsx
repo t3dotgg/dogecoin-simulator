@@ -145,7 +145,7 @@ export const MyStuff: React.FC = () => {
               Social Media
             </div>
             <div>Tweets: {gameStore.tweetCount}</div>
-            <div>Followers: 0</div>
+            <div>Followers: {gameStore.twitterFollowers}</div>
           </>
         )}
       </div>
