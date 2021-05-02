@@ -1,5 +1,3 @@
-const LAST_PRICE_KEY = "last-price";
-
 export type MarketState = {
   dogePerUSD: number;
   priceHistory: number[];
@@ -14,11 +12,8 @@ export type MarketActions = {
 export const generateRandomPrice = () => Math.random() * 10000 + 10000;
 
 export const defaultMarketState: () => MarketState = () => {
-  const storedLastPrice = localStorage.getItem(LAST_PRICE_KEY);
   return {
-    dogePerUSD: storedLastPrice
-      ? parseInt(storedLastPrice)
-      : generateRandomPrice(),
+    dogePerUSD: generateRandomPrice(),
     priceHistory: [],
   };
 };
