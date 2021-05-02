@@ -11,11 +11,9 @@ export const DogePriceChart: React.FC<{ width?: number }> = (props) => {
         style={{
           data: { stroke: "#FFD700", strokeWidth: 5 },
         }}
-        data={marketStore.priceHistory
-          .slice(Math.max(marketStore.priceHistory.length - 50, 0))
-          .map((dogePerUSD, index) => {
-            return { x: index, y: dogePerUSD };
-          })}
+        data={marketStore.priceHistory.map((dogePerUSD, index) => {
+          return { x: index, y: dogePerUSD };
+        })}
       />
       <VictoryAxis
         style={{ tickLabels: { display: "none" }, axis: { strokeWidth: 2 } }}
