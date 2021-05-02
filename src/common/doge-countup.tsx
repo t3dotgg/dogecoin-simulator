@@ -12,7 +12,7 @@ export const DogeCounter: React.FC<{ dogecoin: number }> = ({ dogecoin }) => {
     }
     const newCounter = new CountUp("doge-counter", dogecoin, {
       startVal: dogecoin,
-      duration: 100,
+      duration: 0.1,
     });
 
     updateCounter(newCounter);
