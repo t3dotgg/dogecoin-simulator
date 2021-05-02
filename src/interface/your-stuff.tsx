@@ -1,4 +1,5 @@
 import React from "react";
+import { DogeCounter } from "../common/doge-countup";
 import { Header } from "../common/header";
 import { useGameStore, useHashRate } from "../engine/game";
 import "../odometer.css";
@@ -31,7 +32,7 @@ export const MyStuff: React.FC = () => {
           }}
         >
           <div style={{ paddingRight: "0.5rem" }}>Dogecoin:</div>
-          <div className="odometer">{gameStore.dogecoin}</div>
+          <DogeCounter dogecoin={gameStore.dogecoin} />
           <DogeIcon />
         </div>
         <div
