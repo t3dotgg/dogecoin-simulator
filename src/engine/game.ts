@@ -98,7 +98,7 @@ export const useGameStore = createStore<GameStore>((set) => ({
       if (
         state.phase < 3 &&
         state.dogecoin >= 1000000 &&
-        state.realEstate.length >= 3
+        state.realEstate.length > 2
       ) {
         return { ...sharedUpdate, phase: 3 };
       }
