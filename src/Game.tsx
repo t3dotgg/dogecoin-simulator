@@ -9,6 +9,7 @@ import { PhaseThree } from "./interface/phase-three";
 import { MyStuff } from "./interface/your-stuff";
 import { AdForTheo } from "./interface/theo-ad";
 import { Backdrop } from "./special-effects/background";
+import { DogeHQ } from "./interface/doge-hq";
 
 function Game() {
   useGameRunner();
@@ -27,6 +28,7 @@ function Game() {
         <DogeBase />
         <MinerMarket />
         <FactoryMarketplace />
+        <DogeHQ />
         <PhaseThree />
         <div
           className="onlyMobile"

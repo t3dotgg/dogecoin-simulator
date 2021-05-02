@@ -105,3 +105,23 @@ button:disabled {
 .VictoryContainer {
   touch-action: auto !important;
 }
+
+/* Animations */
+.colorful-text {
+  animation: color-change 10s infinite;
+}
+
+@keyframes color-change {
+  0% {
+    color: red;
+  }
+  33% {
+    color: yellow;
+  }
+  66% {
+    color: lightblue;
+  }
+  100% {
+    color: red;
+  }
+}

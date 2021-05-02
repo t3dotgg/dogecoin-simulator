@@ -14,9 +14,11 @@ export const DevPanel: React.FC = () => {
     <div
       style={{
         position: "absolute",
-        right: 0,
-        bottom: 0,
-        padding: 100,
+        right: -2,
+        bottom: -2,
+        padding: 15,
+        borderTopLeftRadius: 8,
+        border: "1px solid black",
         backgroundColor: "red",
         display: "flex",
         flexDirection: "column",
