@@ -6,5 +6,5 @@ export const useStoragePersist = () => {
   const gameData = useGameStore();
   React.useEffect(() => {
     localStorage.setItem(GAME_STORAGE_KEY, JSON.stringify(gameData));
-  }, [gameData.dogecoin, gameData.usd, gameData.dogePerUSD]);
+  }, [gameData.dogePerUSD]); // Key on dogePerUSD since this is on a timer
 };

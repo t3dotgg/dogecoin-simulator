@@ -29,20 +29,18 @@ export const Backdrop: React.FC = () => {
           zIndex: 100, //We want this above background stuff
         }}
       />
-      {hasPool && (
-        <img
-          src="/assets/fancy-house.jpeg"
-          style={{
-            position: "absolute",
-            right: 0,
-            bottom: 0,
-            opacity: Math.min((doge - 1000000) / 1000000, 1),
-            zIndex: 0,
-            minWidth: "100%",
-            minHeight: "100%",
-          }}
-        />
-      )}
+      <img
+        src="/assets/fancy-house.jpeg"
+        style={{
+          position: "absolute",
+          right: 0,
+          bottom: 0,
+          opacity: hasPool ? Math.min((doge - 1000000) / 1000000, 1) : 0,
+          zIndex: 0,
+          minWidth: "100%",
+          minHeight: "100%",
+        }}
+      />
     </div>
   );
 };

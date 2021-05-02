@@ -95,24 +95,41 @@ export const MyStuff: React.FC = () => {
         >
           USD: ${gameStore.usd.toFixed(2)}
         </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-        >
-          HASH RATE: {hashRate} <div style={{ paddingRight: "0.2rem" }} />
-          <DogeIcon /> per second
-        </div>
 
-        {gameStore.smallMiners > 0 && (
-          <div>Small Miners: {gameStore.smallMiners}</div>
-        )}
-        {gameStore.mediumMiners > 0 && (
-          <div>Medium Miners: {gameStore.mediumMiners}</div>
-        )}
-        {gameStore.largeMiners > 0 && (
-          <div>Large Miners: {gameStore.largeMiners}</div>
+        {(gameStore.largeMiners > 0 ||
+          gameStore.mediumMiners > 0 ||
+          gameStore.smallMiners > 0) && (
+          <>
+            <div
+              style={{
+                fontWeight: "bold",
+                display: "flex",
+                alignItems: "center",
+                paddingTop: 10,
+              }}
+            >
+              Mining Stuff
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              HASH RATE: {hashRate} <div style={{ paddingRight: "0.2rem" }} />
+              <DogeIcon /> per second
+            </div>
+
+            {gameStore.smallMiners > 0 && (
+              <div>Small Miners: {gameStore.smallMiners}</div>
+            )}
+            {gameStore.mediumMiners > 0 && (
+              <div>Medium Miners: {gameStore.mediumMiners}</div>
+            )}
+            {gameStore.largeMiners > 0 && (
+              <div>Large Miners: {gameStore.largeMiners}</div>
+            )}
+          </>
         )}
         {gameStore.realEstate.length > 0 && (
           <>
@@ -120,6 +137,15 @@ export const MyStuff: React.FC = () => {
             {gameStore.realEstate.map((place) => (
               <div key={place}>{place}</div>
             ))}
+          </>
+        )}
+        {gameStore.tweetCount > 0 && (
+          <>
+            <div style={{ marginTop: 10, fontWeight: "bold" }}>
+              Social Media
+            </div>
+            <div>Tweets: {gameStore.tweetCount}</div>
+            <div>Followers: 0</div>
           </>
         )}
       </div>
