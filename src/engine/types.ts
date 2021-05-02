@@ -5,3 +5,7 @@ export enum RealEstate {
   MemeFactory = "Meme Factory",
   Pool = "Pool",
 }
+
+export enum Unlocks {
+  SocialMediaManager = "Social Media Manager",
+}

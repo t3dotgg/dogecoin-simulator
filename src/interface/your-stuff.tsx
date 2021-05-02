@@ -139,15 +139,6 @@ export const MyStuff: React.FC = () => {
             ))}
           </>
         )}
-        {gameStore.tweetCount > 0 && (
-          <>
-            <div style={{ marginTop: 10, fontWeight: "bold" }}>
-              Social Media
-            </div>
-            <div>Tweets: {gameStore.tweetCount}</div>
-            <div>Followers: {gameStore.twitterFollowers}</div>
-          </>
-        )}
       </div>
     </div>
   );
