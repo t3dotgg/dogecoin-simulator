@@ -11,6 +11,7 @@ import { GAME_STORAGE_KEY, RealEstate } from "./types";
 type CoreGameState = {
   ticks: number;
   phase: number;
+  luck: number;
 
   // Currency
   dogecoin: number;
@@ -37,6 +38,8 @@ export type GameActions = {
   addUSD: (USD: number) => void;
   spendUSD: (USD: number) => void;
 
+  addToLuck: (luck: number) => void;
+
   buySmallMiner: () => void;
   buyMediumMiner: () => void;
   buyLargeMiner: () => void;
@@ -47,6 +50,7 @@ export type GameActions = {
 const defaultState: GameState = {
   ticks: 0,
   phase: 1,
+  luck: 0,
 
   dogecoin: 0,
   usd: 200,
@@ -83,6 +87,8 @@ export const useGameStore = createStore<GameStore>((set) => ({
   spendCoin: (coin) => set((state) => ({ dogecoin: state.dogecoin - coin })),
   addUSD: (usd) => set((state) => ({ usd: state.usd + usd })),
   spendUSD: (usd) => set((state) => ({ usd: state.usd - usd })),
+
+  addToLuck: (luck) => set((state) => ({ luck: state.luck + luck })),
 
   runTick: () =>
     set((state) => {
@@ -133,23 +139,26 @@ export const useGameStore = createStore<GameStore>((set) => ({
     set((state) => ({ realEstate: [...state.realEstate, property] })),
 
   // Market bs
-  setRandomDogePrice: (phase: number) => {
+  setRandomDogePrice: () => {
     set((state) => {
       const price =
         state.dogePerUSD +
-        getRandomFluctuation(state.dogePerUSD, phase, {
+        getRandomFluctuation(state.dogePerUSD, state.phase, {
           // Enable ticks after 10 minutes
           isLuckEnabled: state.phase > 1,
+          currentLuck: state.luck,
         });
 
+      const luck =
+        state.luck === 0 ? 0 : state.luck > 0 ? state.luck - 1 : state.luck + 1;
+
+      const history = state.priceHistory.slice(
+        Math.max(state.priceHistory.length - 50, 0)
+      );
       return {
         dogePerUSD: price,
-        priceHistory: [
-          ...state.priceHistory.slice(
-            Math.max(state.priceHistory.length - 50, 0)
-          ),
-          price,
-        ],
+        priceHistory: [...history, price],
+        luck,
       };
     });
   },

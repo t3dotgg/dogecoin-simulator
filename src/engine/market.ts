@@ -4,7 +4,7 @@ export type MarketState = {
 };
 
 export type MarketActions = {
-  setRandomDogePrice: (phase: number) => void;
+  setRandomDogePrice: () => void;
 
   resetMarketPrice: () => void;
 };
@@ -23,6 +23,8 @@ const wallByPhase = [0, 800, 400, 200, 100, 50, 25];
 
 type FluctuationConfig = {
   isLuckEnabled?: boolean;
+
+  currentLuck?: number;
 };
 
 export const getRandomFluctuation = (
@@ -37,7 +39,7 @@ export const getRandomFluctuation = (
     const goodLuck = Math.random() > 0.97;
 
     // Good luck path
-    if (goodLuck) {
+    if (goodLuck || (options.currentLuck && options.currentLuck > 0)) {
       const moveRange = currentVal * 0.5; // Random range: 50%
       const delta = Math.random() * moveRange + currentVal * 0.3; // Total range: random * 50% + 30%, 30% to 80%
       return 0 - delta;
@@ -46,7 +48,7 @@ export const getRandomFluctuation = (
     const badLuck = Math.random() > 0.99;
 
     // Bad luck path
-    if (badLuck) {
+    if (badLuck || (options.currentLuck && options.currentLuck < 0)) {
       const moveRange = currentVal; // Random range: 100%
       const delta = Math.random() * moveRange + currentVal * 0.5; // Total range: random * 100% + 50%, 50% to 150%
       return delta;
