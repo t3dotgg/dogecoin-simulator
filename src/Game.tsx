@@ -12,6 +12,7 @@ import { Backdrop } from "./special-effects/background";
 import { DogeHQ } from "./interface/doge-hq";
 import { TwitterFeed } from "./interface/twitter";
 import { MoonMissionPlanning } from "./interface/moon-launch-pad";
+import { MoonPanel } from "./interface/moon-panel";
 
 function Game() {
   useGameRunner();
@@ -39,6 +40,7 @@ function Game() {
             className="onlyMobile"
             style={{ paddingTop: "2.5rem", height: 0, width: 10 }}
           />
+          <MoonPanel />
         </div>
         {/* Extra stuff */}
         <DevPanel />
