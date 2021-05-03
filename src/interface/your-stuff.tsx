@@ -121,13 +121,13 @@ export const MyStuff: React.FC = () => {
             </div>
 
             {gameStore.smallMiners > 0 && (
-              <div>Small Miners: {gameStore.smallMiners}</div>
+              <div>Crappy Miners: {gameStore.smallMiners}</div>
             )}
             {gameStore.mediumMiners > 0 && (
-              <div>Medium Miners: {gameStore.mediumMiners}</div>
+              <div>Decent Miners: {gameStore.mediumMiners}</div>
             )}
             {gameStore.largeMiners > 0 && (
-              <div>Large Miners: {gameStore.largeMiners}</div>
+              <div>Good Miners: {gameStore.largeMiners}</div>
             )}
           </>
         )}

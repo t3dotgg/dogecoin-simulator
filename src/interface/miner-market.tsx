@@ -35,10 +35,10 @@ export const MinerMarket: React.FC = () => {
           onClick={() => {
             buySmallMiner();
           }}
-          disabled={usd < 50}
+          disabled={usd < getSmallMinerPrice(gameStore.smallMiners)}
           data-tip="+5 hash rate"
         >
-          Buy small miner (${getSmallMinerPrice(gameStore.smallMiners)})
+          Buy crappy miner (${getSmallMinerPrice(gameStore.smallMiners)})
         </button>
         <div style={{ paddingBottom: 5 }} />
         <button
@@ -48,7 +48,7 @@ export const MinerMarket: React.FC = () => {
           disabled={usd < getMediumMinerPrice(gameStore.mediumMiners)}
           data-tip="+25 hash rate"
         >
-          Buy medium miner (${getMediumMinerPrice(gameStore.mediumMiners)})
+          Buy decent miner (${getMediumMinerPrice(gameStore.mediumMiners)})
         </button>
         <div style={{ paddingBottom: 5 }} />
         <button
@@ -58,7 +58,7 @@ export const MinerMarket: React.FC = () => {
           disabled={usd < getLargeMinerPrice(gameStore.largeMiners)}
           data-tip="+70 hash rate"
         >
-          Buy large miner (${getLargeMinerPrice(gameStore.largeMiners)})
+          Buy good miner (${getLargeMinerPrice(gameStore.largeMiners)})
         </button>
       </div>
     </div>
