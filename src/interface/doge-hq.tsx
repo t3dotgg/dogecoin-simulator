@@ -78,6 +78,8 @@ const HiringBoard: React.FC = () => {
   return (
     <div style={{ paddingLeft: 10, paddingBottom: 10 }}>
       <div style={{ fontWeight: "bold" }}>Hiring Board</div>
+      <button>Hire Engineer ($40,000)</button>
+      <button>Hire Astronaut ($100,000)</button>
     </div>
   );
 };

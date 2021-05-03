@@ -14,7 +14,7 @@ export const MoonMissionPlanning: React.FC = () => {
 
   return (
     <div className="panel">
-      <Header>🚀 Moon Mission Planning 🚀</Header>
+      <Header>🚀 Moon Mission Planning</Header>
       <div style={{ padding: 10 }}>
         {`Success Chance:`}
         <br />
