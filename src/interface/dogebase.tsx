@@ -56,15 +56,17 @@ export const DogeBase: React.FC = () => {
           </div>
         </div>
         <DogePriceChart />
-        <button
-          onClick={() => {
-            gameStore.addCoin(gameStore.dogePerUSD * 10);
-            gameStore.spendUSD(10);
-          }}
-          disabled={gameStore.usd < 10}
-        >
-          Buy $10 of doge ({(gameStore.dogePerUSD * 10).toFixed(2)})
-        </button>
+        {gameStore.phase < 3 && (
+          <button
+            onClick={() => {
+              gameStore.addCoin(gameStore.dogePerUSD * 10);
+              gameStore.spendUSD(10);
+            }}
+            disabled={gameStore.usd < 10}
+          >
+            Buy $10 of doge ({(gameStore.dogePerUSD * 10).toFixed(2)})
+          </button>
+        )}
         {gameStore.phase > 1 && (
           <button
             onClick={() => {
@@ -76,15 +78,28 @@ export const DogeBase: React.FC = () => {
             Buy $50 of doge ({(gameStore.dogePerUSD * 50).toFixed(2)})
           </button>
         )}
-        <button
-          onClick={() => {
-            gameStore.spendCoin(10000);
-            gameStore.addUSD(10000 / gameStore.dogePerUSD);
-          }}
-          disabled={gameStore.dogecoin < 10000}
-        >
-          Sell 10,000 doge (${(10000 / gameStore.dogePerUSD).toFixed(2)})
-        </button>
+        {gameStore.phase > 2 && (
+          <button
+            onClick={() => {
+              gameStore.addCoin(gameStore.dogePerUSD * 1000);
+              gameStore.spendUSD(1000);
+            }}
+            disabled={gameStore.usd < 1000}
+          >
+            Buy $1000 of doge ({(gameStore.dogePerUSD * 1000).toFixed(2)})
+          </button>
+        )}
+        {gameStore.phase < 3 && (
+          <button
+            onClick={() => {
+              gameStore.spendCoin(10000);
+              gameStore.addUSD(10000 / gameStore.dogePerUSD);
+            }}
+            disabled={gameStore.dogecoin < 10000}
+          >
+            Sell 10,000 doge (${(10000 / gameStore.dogePerUSD).toFixed(2)})
+          </button>
+        )}
         {gameStore.phase > 1 && (
           <button
             onClick={() => {
@@ -94,6 +109,17 @@ export const DogeBase: React.FC = () => {
             disabled={gameStore.dogecoin < 50000}
           >
             Sell 50,000 doge (${(50000 / gameStore.dogePerUSD).toFixed(2)})
+          </button>
+        )}
+        {gameStore.phase > 2 && (
+          <button
+            onClick={() => {
+              gameStore.spendCoin(1000000);
+              gameStore.addUSD(1000000 / gameStore.dogePerUSD);
+            }}
+            disabled={gameStore.dogecoin < 1000000}
+          >
+            Sell 1,000,000 doge (${(1000000 / gameStore.dogePerUSD).toFixed(2)})
           </button>
         )}
       </div>
