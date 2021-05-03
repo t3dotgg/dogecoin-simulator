@@ -18,32 +18,37 @@ function Game() {
   useMarketRunner();
   useStoragePersist();
 
-  return (
-    <div className="app">
-      <AdForTheo />
-      <div className="gamescreen">
-        <div
-          className="onlyMobile"
-          style={{ paddingTop: "2.5rem", height: 0, width: 10 }}
-        />
-        <MyStuff />
-        <DogeBase />
-        <TwitterFeed />
-        <ObjectivePicker />
-        <DogeHQ />
-        <MoonMissionPlanning />
-        <MinerMarket />
-        <FactoryMarketplace />
-        <div
-          className="onlyMobile"
-          style={{ paddingTop: "2.5rem", height: 0, width: 10 }}
-        />
+  const body = React.useMemo(
+    () => (
+      <div className="app">
+        <AdForTheo />
+        <div className="gamescreen">
+          <div
+            className="onlyMobile"
+            style={{ paddingTop: "2.5rem", height: 0, width: 10 }}
+          />
+          <MyStuff />
+          <DogeBase />
+          <TwitterFeed />
+          <ObjectivePicker />
+          <DogeHQ />
+          <MoonMissionPlanning />
+          <MinerMarket />
+          <FactoryMarketplace />
+          <div
+            className="onlyMobile"
+            style={{ paddingTop: "2.5rem", height: 0, width: 10 }}
+          />
+        </div>
+        {/* Extra stuff */}
+        <DevPanel />
+        <Backdrop />
       </div>
-      {/* Extra stuff */}
-      <DevPanel />
-      <Backdrop />
-    </div>
+    ),
+    []
   );
+
+  return <div>{body}</div>;
 }
 
 export default Game;

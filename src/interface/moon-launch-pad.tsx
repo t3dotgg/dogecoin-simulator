@@ -42,6 +42,10 @@ export const MoonMissionPlanning: React.FC = () => {
           <span>Research</span>
         </div>
       </div>
+      <div style={{ padding: 5, fontWeight: "bold" }}>Commands</div>
+      <div style={{ padding: 10, display: "flex", flexDirection: "column" }}>
+        <button style={{ borderColor: "red", color: "red" }}>🚀 Launch</button>
+      </div>
     </div>
   );
 };
