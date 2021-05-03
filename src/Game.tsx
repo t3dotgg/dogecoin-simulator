@@ -5,12 +5,13 @@ import { useStoragePersist } from "./engine/storage-persist";
 import { DogeBase } from "./interface/dogebase";
 import { MinerMarket } from "./interface/miner-market";
 import { FactoryMarketplace } from "./interface/real-estate";
-import { PhaseFour } from "./interface/phase-four";
+import { ObjectivePicker } from "./interface/objective-picker";
 import { MyStuff } from "./interface/your-stuff";
 import { AdForTheo } from "./interface/theo-ad";
 import { Backdrop } from "./special-effects/background";
 import { DogeHQ } from "./interface/doge-hq";
 import { TwitterFeed } from "./interface/twitter";
+import { MoonMissionPlanning } from "./interface/moon-launch-pad";
 
 function Game() {
   useGameRunner();
@@ -28,10 +29,11 @@ function Game() {
         <MyStuff />
         <DogeBase />
         <TwitterFeed />
+        <ObjectivePicker />
         <DogeHQ />
+        <MoonMissionPlanning />
         <MinerMarket />
         <FactoryMarketplace />
-        <PhaseFour />
         <div
           className="onlyMobile"
           style={{ paddingTop: "2.5rem", height: 0, width: 10 }}

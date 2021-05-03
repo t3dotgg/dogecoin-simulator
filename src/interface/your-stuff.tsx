@@ -116,8 +116,9 @@ export const MyStuff: React.FC = () => {
                 alignItems: "center",
               }}
             >
-              HASH RATE: {hashRate} <div style={{ paddingRight: "0.2rem" }} />
-              <DogeIcon /> per second
+              HASH RATE: {hashRate.toFixed(2)}{" "}
+              <div style={{ paddingRight: "0.2rem" }} />
+              <DogeIcon /> per sec
             </div>
 
             {gameStore.smallMiners > 0 && (

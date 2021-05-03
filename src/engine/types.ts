@@ -8,4 +8,7 @@ export enum RealEstate {
 
 export enum Unlocks {
   SocialMediaManager = "Social Media Manager",
+  Incorporate = "Incorporate",
 }
+
+export type CurrentMission = "To The Moon" | null;

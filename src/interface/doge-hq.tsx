@@ -15,6 +15,7 @@ export const DogeHQ: React.FC = () => {
   if (!hasFactory) return null;
 
   const hasSocialMediaManager = unlocks.includes(Unlocks.SocialMediaManager);
+  const hasIncoroprated = unlocks.includes(Unlocks.Incorporate);
 
   return (
     <div className="panel">
@@ -45,6 +46,38 @@ export const DogeHQ: React.FC = () => {
           <div style={{ marginTop: 10 }}>1 Social Media Manager</div>
         </div>
       )}
+      {!hasIncoroprated && (
+        <div style={{ padding: 10 }}>
+          <button
+            onClick={() => {
+              unlockNewThing(Unlocks.Incorporate);
+              spendUSD(100000);
+            }}
+            disabled={usd < 100000}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexWrap: "nowrap",
+            }}
+          >
+            Incorporate ($100,000)
+          </button>
+        </div>
+      )}
+      <HiringBoard />
+    </div>
+  );
+};
+
+const HiringBoard: React.FC = () => {
+  const phase = useGameStore((state) => state.phase);
+  const currentMission = useGameStore((state) => state.currentMission);
+
+  if (phase < 4 || !currentMission) return null;
+
+  return (
+    <div style={{ paddingLeft: 10, paddingBottom: 10 }}>
+      <div style={{ fontWeight: "bold" }}>Hiring Board</div>
     </div>
   );
 };

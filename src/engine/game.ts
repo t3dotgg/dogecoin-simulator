@@ -6,7 +6,7 @@ import {
   generateRandomPrice,
   MarketActions,
 } from "./market";
-import { GAME_STORAGE_KEY, RealEstate, Unlocks } from "./types";
+import { CurrentMission, GAME_STORAGE_KEY, RealEstate, Unlocks } from "./types";
 import { GeneratedTweets } from "../data/tweets";
 
 type CoreGameState = {
@@ -32,6 +32,14 @@ type CoreGameState = {
   tweetCount: number;
   twitterFollowers: number;
   tweetIDs: number[];
+
+  // Missions
+  currentMission: CurrentMission;
+
+  // Moon Mission Numbers
+  engineers: number;
+  successChance: number;
+  minerAllocation: number;
 };
 
 export type GameState = CoreGameState & MarketState;
@@ -57,6 +65,9 @@ export type GameActions = {
 
   acquireProperty: (property: RealEstate) => void;
   unlockSomething: (unlock: Unlocks) => void;
+
+  setCurrentMission: (mission: CurrentMission) => void;
+  setMinerAllocation: (alloc: number) => void;
 };
 
 const defaultState: GameState = {
@@ -81,6 +92,12 @@ const defaultState: GameState = {
 
   // Market stuff
   ...defaultMarketState(),
+
+  // Mission stuff
+  currentMission: null,
+  engineers: 0,
+  successChance: 0,
+  minerAllocation: 0,
 };
 
 const loadGame = () => {
@@ -116,6 +133,10 @@ export const useGameStore = createStore<GameStore>((set) => ({
         dogecoin: newDogeCount,
         ticks: state.ticks + 1,
         maxDogecoin: Math.max(newDogeCount, state.maxDogecoin),
+        successChance:
+          state.currentMission === "To The Moon"
+            ? state.successChance + calculateResearchRate(state) / 10
+            : 0,
       };
       if (state.phase < 2 && state.dogecoin >= 500000) {
         return { ...sharedUpdate, phase: 2 };
@@ -127,7 +148,12 @@ export const useGameStore = createStore<GameStore>((set) => ({
       ) {
         return { ...sharedUpdate, phase: 3 };
       }
-      if (state.phase < 4 && state.dogecoin > 10000000) {
+      if (
+        state.phase < 4 &&
+        state.dogecoin > 10000000 &&
+        state.unlocks.includes(Unlocks.SocialMediaManager) &&
+        state.unlocks.includes(Unlocks.Incorporate)
+      ) {
         return { ...sharedUpdate, phase: 4 };
       }
       return {
@@ -221,6 +247,10 @@ export const useGameStore = createStore<GameStore>((set) => ({
       };
     });
   },
+
+  setCurrentMission: (mission) => set(() => ({ currentMission: mission })),
+  setMinerAllocation: (alloc) => set(() => ({ minerAllocation: alloc })),
+
   resetMarketPrice: () =>
     set(() => ({ dogePerUSD: generateRandomPrice(), priceHistory: [] })),
 }));
@@ -228,7 +258,19 @@ export const useGameStore = createStore<GameStore>((set) => ({
 const calculateHashRate = (store: GameState) => {
   return (
     (store.smallMiners * 5 + store.mediumMiners * 25 + store.largeMiners * 70) *
-    (store.realEstate.includes(RealEstate.Server) ? 1.3 : 1)
+    (store.realEstate.includes(RealEstate.Server) ? 1.3 : 1) *
+    (1 - store.minerAllocation)
+  );
+};
+
+const researchFlattener = 0.0000001;
+
+const calculateResearchRate = (store: GameState) => {
+  return (
+    (store.smallMiners * 1 + store.mediumMiners * 5 + store.largeMiners * 15) *
+    (store.realEstate.includes(RealEstate.Server) ? 1.3 : 1) *
+    researchFlattener *
+    store.minerAllocation
   );
 };
 
@@ -241,3 +283,6 @@ export const getLargeMinerPrice = (largeMinerCount: number) =>
 
 export const useHashRate = () =>
   useGameStore((state) => calculateHashRate(state));
+
+export const useResearchRate = () =>
+  useGameStore((state) => calculateResearchRate(state));
