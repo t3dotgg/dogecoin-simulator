@@ -9,7 +9,9 @@ export const DogeHQ: React.FC = () => {
   const hasFactory = realEstate.includes(RealEstate.MemeFactory);
 
   const usd = useGameStore((state) => state.usd);
+  const doge = useGameStore((state) => state.dogecoin);
   const spendUSD = useGameStore((state) => state.spendUSD);
+  const spendDoge = useGameStore((state) => state.spendCoin);
   const unlocks = useGameStore((state) => state.unlocks);
   const unlockNewThing = useGameStore((state) => state.unlockSomething);
 
@@ -32,16 +34,16 @@ export const DogeHQ: React.FC = () => {
           <button
             onClick={() => {
               unlockNewThing(Unlocks.SocialMediaManager);
-              spendUSD(30000);
+              spendDoge(1000000);
             }}
-            disabled={usd < 30000}
+            disabled={doge < 1000000}
             style={{
               display: "flex",
               alignItems: "center",
               flexWrap: "nowrap",
             }}
           >
-            Hire Social Media Manager ($30,000)
+            Hire Social Media Manager (1,000,000 Doge)
           </button>
         </div>
       )}
