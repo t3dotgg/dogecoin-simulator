@@ -1,6 +1,11 @@
 import React from "react";
 import { Header } from "../common/header";
-import { useGameStore } from "../engine/game";
+import {
+  getLargeMinerPrice,
+  getMediumMinerPrice,
+  getSmallMinerPrice,
+  useGameStore,
+} from "../engine/game";
 
 export const MinerMarket: React.FC = () => {
   const usd = useGameStore((state) => state.usd);
@@ -14,6 +19,7 @@ export const MinerMarket: React.FC = () => {
     state.buyMediumMiner,
     state.buyLargeMiner,
   ]);
+  const gameStore = useGameStore();
 
   if (!isEnabled) return null;
 
@@ -32,27 +38,27 @@ export const MinerMarket: React.FC = () => {
           disabled={usd < 50}
           data-tip="+5 hash rate"
         >
-          Buy small miner ($50)
+          Buy small miner (${getSmallMinerPrice(gameStore.smallMiners)})
         </button>
         <div style={{ paddingBottom: 5 }} />
         <button
           onClick={() => {
             buyMediumMiner();
           }}
-          disabled={usd < 200}
+          disabled={usd < getMediumMinerPrice(gameStore.mediumMiners)}
           data-tip="+25 hash rate"
         >
-          Buy medium miner ($200)
+          Buy medium miner (${getMediumMinerPrice(gameStore.mediumMiners)})
         </button>
         <div style={{ paddingBottom: 5 }} />
         <button
           onClick={() => {
             buyLargeMiner();
           }}
-          disabled={usd < 500}
+          disabled={usd < getLargeMinerPrice(gameStore.largeMiners)}
           data-tip="+70 hash rate"
         >
-          Buy large miner ($500)
+          Buy large miner (${getLargeMinerPrice(gameStore.largeMiners)})
         </button>
       </div>
     </div>

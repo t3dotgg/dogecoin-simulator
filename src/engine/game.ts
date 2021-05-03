@@ -140,17 +140,17 @@ export const useGameStore = createStore<GameStore>((set) => ({
   buySmallMiner: () =>
     set((state) => ({
       smallMiners: state.smallMiners + 1,
-      usd: state.usd - 50,
+      usd: state.usd - getSmallMinerPrice(state.smallMiners),
     })),
   buyMediumMiner: () =>
     set((state) => ({
       mediumMiners: state.mediumMiners + 1,
-      usd: state.usd - 200,
+      usd: state.usd - getMediumMinerPrice(state.mediumMiners),
     })),
   buyLargeMiner: () =>
     set((state) => ({
       largeMiners: state.largeMiners + 1,
-      usd: state.usd - 500,
+      usd: state.usd - getLargeMinerPrice(state.largeMiners),
     })),
 
   sendTweet: () => {
@@ -231,6 +231,13 @@ const calculateHashRate = (store: GameState) => {
     (store.realEstate.includes(RealEstate.Server) ? 1.3 : 1)
   );
 };
+
+export const getSmallMinerPrice = (smallMinerCount: number) =>
+  Math.floor(Math.pow(1.35, smallMinerCount) - 1 + 50);
+export const getMediumMinerPrice = (mediumMinerCount: number) =>
+  Math.floor(Math.pow(1.4, mediumMinerCount) - 1 + 200);
+export const getLargeMinerPrice = (largeMinerCount: number) =>
+  Math.floor(Math.pow(1.45, largeMinerCount) - 1 + 500);
 
 export const useHashRate = () =>
   useGameStore((state) => calculateHashRate(state));
