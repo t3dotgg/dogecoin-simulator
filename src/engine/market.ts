@@ -19,7 +19,7 @@ export const defaultMarketState: () => MarketState = () => {
 };
 
 // Current "wall" values used as a boost to keep prices from getting too good too early
-const wallByPhase = [0, 800, 400, 200, 100, 50, 25];
+const wallByPhase = [0, 1000, 700, 500, 300, 200, 100];
 
 type FluctuationConfig = {
   isLuckEnabled?: boolean;
