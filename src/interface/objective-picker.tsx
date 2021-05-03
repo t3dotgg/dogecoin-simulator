@@ -6,8 +6,10 @@ export const ObjectivePicker: React.FC = () => {
   const phase = useGameStore((state) => state.phase);
   const currentMission = useGameStore((state) => state.currentMission);
   const setCurrentMission = useGameStore((state) => state.setCurrentMission);
+  const currentLocation = useGameStore((state) => state.currentLocation);
 
-  if (phase < 4 || currentMission !== null) return null;
+  if (phase < 4 || currentMission !== null || currentLocation === "moon")
+    return null;
 
   return (
     <div className="panel">
