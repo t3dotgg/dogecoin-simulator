@@ -4,8 +4,8 @@ import { useGameRunner, useMarketRunner } from "./engine/runtime";
 import { useStoragePersist } from "./engine/storage-persist";
 import { DogeBase } from "./interface/dogebase";
 import { MinerMarket } from "./interface/miner-market";
-import { FactoryMarketplace } from "./interface/phase-two";
-import { PhaseThree } from "./interface/phase-three";
+import { FactoryMarketplace } from "./interface/real-estate";
+import { PhaseFour } from "./interface/phase-four";
 import { MyStuff } from "./interface/your-stuff";
 import { AdForTheo } from "./interface/theo-ad";
 import { Backdrop } from "./special-effects/background";
@@ -31,7 +31,7 @@ function Game() {
         <DogeHQ />
         <MinerMarket />
         <FactoryMarketplace />
-        <PhaseThree />
+        <PhaseFour />
         <div
           className="onlyMobile"
           style={{ paddingTop: "2.5rem", height: 0, width: 10 }}
