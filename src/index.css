@@ -4,6 +4,8 @@ body {
     "Marker Felt", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+  overflow-x: hidden;
 }
 /* Border box is important */
 
@@ -15,6 +17,12 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+  font-style: italic;
 }
 
 button {

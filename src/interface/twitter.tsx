@@ -4,6 +4,13 @@ import { GeneratedTweets } from "../data/tweets";
 import { useGameStore } from "../engine/game";
 import { Unlocks } from "../engine/types";
 
+const linkify = function (body: string) {
+  return body.replace(
+    /(^|\s)@(\w+)/g,
+    '$1<a href="http://www.twitter.com/$2">@$2</a>'
+  );
+};
+
 export const TwitterFeed: React.FC = () => {
   const unlocks = useGameStore((state) => state.unlocks);
   const hasSocialMediaManager = unlocks.includes(Unlocks.SocialMediaManager);
@@ -59,9 +66,13 @@ export const TwitterFeed: React.FC = () => {
             >
               <div>
                 <span style={{ fontWeight: "bold" }}>DogeMan </span>
-                <span>@DogeTycoon</span>
+                <a href="https://twitter.com/DogeTyc00n">@DogeTyc00n</a>
               </div>
-              {GeneratedTweets[tweet]}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: linkify(GeneratedTweets[tweet]),
+                }}
+              />
             </div>
           </div>
         ))}
