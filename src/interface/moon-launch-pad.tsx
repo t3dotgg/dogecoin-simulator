@@ -8,6 +8,8 @@ export const MoonMissionPlanning: React.FC = () => {
   const successChance = useGameStore((state) => state.successChance);
   const minerAllocation = useGameStore((state) => state.minerAllocation);
   const setMinerAllocation = useGameStore((state) => state.setMinerAllocation);
+  const astronauts = useGameStore((state) => state.astronauts);
+  const launch = useGameStore((state) => state.launch);
   const researchRate = useResearchRate();
 
   if (mission !== "To The Moon") return null;
@@ -42,10 +44,21 @@ export const MoonMissionPlanning: React.FC = () => {
           <span>Research</span>
         </div>
       </div>
-      <div style={{ padding: 5, fontWeight: "bold" }}>Commands</div>
-      <div style={{ padding: 10, display: "flex", flexDirection: "column" }}>
-        <button style={{ borderColor: "red", color: "red" }}>🚀 Launch</button>
-      </div>
+      {astronauts > 0 && (
+        <>
+          <div style={{ padding: 5, fontWeight: "bold" }}>Commands</div>
+          <div
+            style={{ padding: 10, display: "flex", flexDirection: "column" }}
+          >
+            <button
+              style={{ borderColor: "red", color: "red" }}
+              onClick={launch}
+            >
+              🚀 Launch
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

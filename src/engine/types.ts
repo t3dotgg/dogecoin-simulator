@@ -12,3 +12,5 @@ export enum Unlocks {
 }
 
 export type CurrentMission = "To The Moon" | null;
+
+export type Locations = "earth" | "moon";

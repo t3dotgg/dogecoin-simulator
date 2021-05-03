@@ -7,7 +7,13 @@ import {
   generateRandomPrice,
   MarketActions,
 } from "./market";
-import { CurrentMission, GAME_STORAGE_KEY, RealEstate, Unlocks } from "./types";
+import {
+  CurrentMission,
+  GAME_STORAGE_KEY,
+  Locations,
+  RealEstate,
+  Unlocks,
+} from "./types";
 import { GeneratedTweets } from "../data/tweets";
 import { ASTRONAUT_SALARY, ENGINEER_SALARY } from "../data/config";
 
@@ -37,6 +43,7 @@ type CoreGameState = {
 
   // Missions
   currentMission: CurrentMission;
+  currentLocation: Locations;
 
   // Moon Mission Numbers
   engineers: number;
@@ -72,6 +79,7 @@ const defaultState: GameState = {
 
   // Mission stuff
   currentMission: null,
+  currentLocation: "earth",
   engineers: 0,
   astronauts: 0,
   successChance: 0,
@@ -245,6 +253,31 @@ export const useGameStore = createStore(
         usd: state.usd - ENGINEER_SALARY,
       })),
 
+    launch: () =>
+      set((state) => {
+        const roll = Math.random();
+
+        if (state.successChance > roll) {
+          return {
+            currentLocation: "moon",
+            phase: 5,
+            astronauts: state.astronauts,
+            successChance: 0,
+            currentMission: null,
+            minerAllocation: 0,
+          };
+        } else {
+          return {
+            currentLocation: "earth",
+            phase: state.phase,
+            astronauts: 0,
+            successChance: 0,
+            currentMission: state.currentMission,
+            minerAllocation: state.minerAllocation,
+          };
+        }
+      }),
+
     resetMarketPrice: () =>
       set(() => ({ dogePerUSD: generateRandomPrice(), priceHistory: [] })),
   }))
@@ -258,9 +291,8 @@ const calculateHashRate = (store: GameState) => {
   );
 };
 
-const researchFlattener = 0.0000001;
-
-const engFactor = 0.1;
+const researchFlattener = 0.00000015; // Nerfs research rate to be reasonable number (slowly approaching 1)
+const engFactor = 0.5; // Multiplier "per eng" to the planning rate
 
 const calculateResearchRate = (store: GameState) => {
   return (

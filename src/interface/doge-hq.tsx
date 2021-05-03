@@ -15,6 +15,7 @@ export const DogeHQ: React.FC = () => {
 
   const engineers = useGameStore((state) => state.engineers);
   const astronauts = useGameStore((state) => state.astronauts);
+  const currentMission = useGameStore((state) => state.currentMission);
 
   if (!hasFactory) return null;
 
@@ -50,7 +51,7 @@ export const DogeHQ: React.FC = () => {
           {hasSocialMediaManager && (
             <div style={{ marginTop: 10 }}>1 Social Media Manager</div>
           )}
-          {hasIncoroprated && (
+          {currentMission === "To The Moon" && (
             <>
               <div>{engineers} Engineers</div>
               <div>{astronauts} Astronauts</div>

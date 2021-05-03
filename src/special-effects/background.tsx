@@ -7,6 +7,7 @@ export const Backdrop: React.FC = () => {
   const hasPool = useGameStore((state) =>
     state.realEstate.includes(RealEstate.Pool)
   );
+  const location = useGameStore((state) => state.currentLocation);
   return (
     <div
       style={{
@@ -19,7 +20,11 @@ export const Backdrop: React.FC = () => {
       }}
     >
       <img
-        src="/assets/invisidoge.png"
+        src={
+          location === "moon"
+            ? "/assets/invisidoge-astronaut.png"
+            : "/assets/invisidoge.png"
+        }
         style={{
           position: "absolute",
           right: 0,
@@ -30,7 +35,9 @@ export const Backdrop: React.FC = () => {
         }}
       />
       <img
-        src="/assets/fancy-house.jpeg"
+        src={
+          location === "moon" ? "/assets/moon.jpeg" : "/assets/fancy-house.jpeg"
+        }
         style={{
           position: "absolute",
           right: 0,

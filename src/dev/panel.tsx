@@ -33,6 +33,7 @@ export const DevPanel: React.FC = () => {
       <button onClick={() => gameStore.addCoin(100000)}>+100k doge</button>
       <button onClick={() => gameStore.addCoin(10000000)}>+10m doge</button>
       <button onClick={() => gameStore.addUSD(10000)}>+10k USD</button>
+      <button onClick={() => gameStore.addUSD(100000)}>+100k USD</button>
     </div>
   );
 };
