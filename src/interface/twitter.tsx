@@ -66,7 +66,7 @@ export const TwitterFeed: React.FC = () => {
             >
               <div>
                 <span style={{ fontWeight: "bold" }}>DogeMan </span>
-                <a href="https://twitter.com/DogeTyc00n">@DogeTyc00n</a>
+                <span>@DogeTyc00n</span>
               </div>
               <div
                 dangerouslySetInnerHTML={{
