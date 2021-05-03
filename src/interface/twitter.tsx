@@ -40,7 +40,7 @@ export const TwitterFeed: React.FC = () => {
         <span>Tweets: {tweetCount}</span>
       </div>
       <div style={{ height: 200, overflowY: "scroll" }}>
-        {tweets.slice(0, 20).map((tweet) => (
+        {tweets.slice(0, 20).map((tweet, index) => (
           <div
             style={{
               marginBottom: 3,
@@ -48,6 +48,7 @@ export const TwitterFeed: React.FC = () => {
               backgroundColor: "white",
               display: "flex",
             }}
+            key={index}
           >
             <img
               src="/assets/doge-head.png"
