@@ -8,7 +8,7 @@ export const DogePriceChart: React.FC<{ width?: number }> = (props) => {
   return (
     <VictoryChart
       width={props.width}
-      padding={{ left: 60, right: 60, top: 30, bottom: 30 }}
+      padding={{ left: 60, right: 60, top: 50, bottom: 50 }}
     >
       <VictoryLine
         style={{
