@@ -16,6 +16,7 @@ import {
 } from "./types";
 import { GeneratedTweets } from "../data/tweets";
 import { ASTRONAUT_SALARY, ENGINEER_SALARY } from "../data/config";
+import { addVictory } from "./victory-store";
 
 type CoreGameState = {
   ticks: number;
@@ -262,6 +263,13 @@ export const useGameStore = createStore(
         const roll = Math.random();
 
         if (state.successChance > roll) {
+          addVictory({
+            ticks: state.ticks,
+            maxDoge: state.maxDogecoin,
+            date: new Date().toString(),
+            failures: state.failures,
+            casualties: state.casualties,
+          });
           return {
             currentLocation: "moon",
             phase: 5,
