@@ -23,6 +23,8 @@ type CoreGameState = {
   phase: number;
   luck: number;
 
+  paused: boolean;
+
   // Currency
   dogecoin: number;
   usd: number;
@@ -61,6 +63,7 @@ const defaultState: GameState = {
   ticks: 0,
   phase: 1,
   luck: 0,
+  paused: false,
 
   dogecoin: 0,
   usd: 200,
@@ -95,7 +98,7 @@ const loadGame = () => {
   const stored = localStorage.getItem(GAME_STORAGE_KEY);
   if (stored) {
     const result = JSON.parse(stored) as Partial<GameState>;
-    return { ...defaultState, ...result };
+    return { ...defaultState, ...result, paused: false };
   }
 
   return defaultState;
@@ -296,6 +299,8 @@ export const useGameStore = createStore(
 
     resetMarketPrice: () =>
       set(() => ({ dogePerUSD: generateRandomPrice(), priceHistory: [] })),
+    pause: () => set(() => ({ paused: true })),
+    resume: () => set(() => ({ paused: false })),
   }))
 );
 

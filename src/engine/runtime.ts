@@ -6,12 +6,13 @@ export const useGameRunner = () => {
 
   // Runs timers
   useEffect(() => {
+    if (gameStore.paused) return;
     const currentUpdater = setInterval(() => {
       gameStore.runTick();
     }, 100);
 
     return () => clearInterval(currentUpdater);
-  }, []);
+  }, [gameStore.paused]);
 };
 
 export const useMarketRunner = () => {

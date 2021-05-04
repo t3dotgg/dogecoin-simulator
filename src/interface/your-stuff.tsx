@@ -4,6 +4,7 @@ import { Header } from "../common/header";
 import { useGameStore, useHashRate } from "../engine/game";
 import "../odometer.css";
 import Modal from "react-modal";
+import { SettingsModal } from "./settings-modal";
 
 const DogeIcon = () => (
   <img
@@ -30,44 +31,24 @@ export const MyStuff: React.FC = () => {
         >
           Much Inventory
           <img
-            src="/assets/reset-icon.png"
-            style={{ height: "1rem" }}
-            onClick={() => setResetModalOpen(true)}
+            src="/assets/crappy-gear.svg"
+            style={{ height: "1.5rem" }}
+            onClick={() => {
+              setResetModalOpen(true);
+              gameStore.pause();
+            }}
           />
         </div>
       </Header>
       <Modal
         isOpen={isResetModalOpen}
-        onRequestClose={() => setResetModalOpen(false)}
+        onRequestClose={() => {
+          setResetModalOpen(false);
+          gameStore.resume();
+        }}
         ariaHideApp={false}
-        style={{ content: { display: "flex", flexDirection: "column" } }}
       >
-        <div style={{ width: "100%", textAlign: "center", fontSize: 20 }}>
-          Are you sure you want to reset?
-        </div>
-        <div style={{ width: "100%", textAlign: "center", fontSize: 20 }}>
-          (There's no way to undo this)
-        </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            paddingTop: 20,
-          }}
-        >
-          <button
-            onClick={() => {
-              gameStore.resetToDefault();
-              setResetModalOpen(false);
-            }}
-          >
-            Yes, reset me!
-          </button>
-          <button onClick={() => setResetModalOpen(false)}>
-            No, send me back!
-          </button>
-        </div>
+        <SettingsModal closeModal={() => setResetModalOpen(false)} />
       </Modal>
       <div
         style={{
