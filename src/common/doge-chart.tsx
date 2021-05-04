@@ -6,7 +6,10 @@ export const DogePriceChart: React.FC<{ width?: number }> = (props) => {
   const marketStore = useGameStore();
 
   return (
-    <VictoryChart width={props.width}>
+    <VictoryChart
+      width={props.width}
+      padding={{ left: 60, right: 60, top: 30, bottom: 30 }}
+    >
       <VictoryLine
         style={{
           data: { stroke: "#FFD700", strokeWidth: 5 },
