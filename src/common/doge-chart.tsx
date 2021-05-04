@@ -30,6 +30,10 @@ export const DogePriceChart: React.FC<{ width?: number }> = (props) => {
           },
           axis: { strokeWidth: 2 },
         }}
+        tickFormat={(tick) => {
+          if (tick < 1000) return tick;
+          return Math.round(tick / 100) / 10 + "k";
+        }}
       />
     </VictoryChart>
   );
