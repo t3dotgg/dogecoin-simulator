@@ -18,6 +18,8 @@ import { GeneratedTweets } from "../data/tweets";
 import { ASTRONAUT_SALARY, ENGINEER_SALARY } from "../data/config";
 import { addVictory } from "./victory-store";
 
+import ReactGA from "react-ga";
+
 type CoreGameState = {
   ticks: number;
   phase: number;
@@ -272,6 +274,11 @@ export const useGameStore = createStore(
             date: new Date().toString(),
             failures: state.failures,
             casualties: state.casualties,
+          });
+          ReactGA.event({
+            value: state.ticks,
+            action: "victory-1.0",
+            category: "game",
           });
           return {
             currentLocation: "moon",
