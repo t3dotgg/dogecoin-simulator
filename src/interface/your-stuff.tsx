@@ -5,6 +5,7 @@ import { useGameStore, useHashRate } from "../engine/game";
 import "../odometer.css";
 import Modal from "react-modal";
 import { SettingsModal } from "./settings-modal";
+import ReactGA from "react-ga";
 
 const DogeIcon = () => (
   <img
@@ -18,6 +19,12 @@ export const MyStuff: React.FC = () => {
   const hashRate = useHashRate();
 
   const [isResetModalOpen, setResetModalOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (isResetModalOpen) {
+      ReactGA.modalview("/settings");
+    }
+  }, [isResetModalOpen]);
 
   return (
     <div className="panel my-panel">

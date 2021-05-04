@@ -24,9 +24,12 @@ export const MoonPanel: React.FC = () => {
     >
       Congrats! You're in space!
       <br />
-      This is "endgame" for now, expect more updates soon
-      <br />
-      <br />
+      <div style={{ display: "contents", fontSize: "1rem" }}>
+        This is end...for now. I could be convinced to add more 🤔
+        <br />
+        If you'd like to play again, click the "Reset" button in settings 😄
+      </div>
+      <div style={{ paddingTop: 8 }} />
       Victories
       <div
         style={{
