@@ -54,12 +54,12 @@ export const FactoryMarketplace: React.FC = () => {
           <button
             onClick={() => {
               acquireProperty(RealEstate.Pool);
-              spendUSD(40000);
+              spendUSD(20000);
             }}
-            disabled={usd < 40000}
+            disabled={usd < 20000}
             data-tip="Pools are cool"
           >
-            Buy a pool ($40,000)
+            Buy a pool ($20,000)
           </button>
         )}
       </div>
