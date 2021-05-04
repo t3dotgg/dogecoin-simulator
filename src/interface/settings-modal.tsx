@@ -10,6 +10,20 @@ export const SettingsModal: React.FC<{ closeModal: () => void }> = ({
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          padding: 10,
+          fontSize: 20,
+          fontWeight: "bold",
+          cursor: "pointer",
+        }}
+        onClick={closeModal}
+      >
+        X
+      </div>
       <div style={{ fontSize: 20, fontWeight: "bold" }}>Donate:</div>
       <div
         style={{ fontSize: 20, textOverflow: "ellipsis", overflowX: "hidden" }}

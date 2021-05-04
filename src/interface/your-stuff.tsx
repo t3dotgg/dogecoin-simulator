@@ -47,6 +47,7 @@ export const MyStuff: React.FC = () => {
           gameStore.resume();
         }}
         ariaHideApp={false}
+        style={{ overlay: { zIndex: 1000 } }}
       >
         <SettingsModal closeModal={() => setResetModalOpen(false)} />
       </Modal>
