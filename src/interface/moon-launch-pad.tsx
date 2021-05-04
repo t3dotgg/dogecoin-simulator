@@ -12,11 +12,15 @@ export const MoonMissionPlanning: React.FC = () => {
   const launch = useGameStore((state) => state.launch);
   const researchRate = useResearchRate();
 
+  const failures = useGameStore((state) => state.failures);
+  const casualties = useGameStore((state) => state.casualties);
+
   if (mission !== "To The Moon") return null;
 
   return (
     <div className="panel">
       <Header>🚀 Moon Mission Planning</Header>
+
       <div style={{ padding: 10 }}>
         {`Success Chance:`}
         <br />
@@ -58,6 +62,17 @@ export const MoonMissionPlanning: React.FC = () => {
             </button>
           </div>
         </>
+      )}
+      {failures > 0 && (
+        <div>
+          <div style={{ padding: 5, fontWeight: "bold" }}>
+            Previous Missions
+          </div>
+          <div style={{ paddingLeft: 10, paddingBottom: 5 }}>
+            <div>Failures: {failures}</div>
+            <div>Casualties: {casualties}</div>
+          </div>
+        </div>
       )}
     </div>
   );

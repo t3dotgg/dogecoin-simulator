@@ -50,6 +50,8 @@ type CoreGameState = {
   astronauts: number;
   successChance: number;
   minerAllocation: number;
+  failures: number;
+  casualties: number;
 };
 
 export type GameState = CoreGameState & MarketState;
@@ -84,6 +86,8 @@ const defaultState: GameState = {
   astronauts: 0,
   successChance: 0,
   minerAllocation: 0,
+  failures: 0,
+  casualties: 0,
 };
 
 const loadGame = () => {
@@ -265,6 +269,8 @@ export const useGameStore = createStore(
             successChance: 0,
             currentMission: null,
             minerAllocation: 0,
+            failures: state.failures,
+            casualties: state.casualties,
           };
         } else {
           return {
@@ -274,6 +280,8 @@ export const useGameStore = createStore(
             successChance: 0,
             currentMission: state.currentMission,
             minerAllocation: state.minerAllocation,
+            failures: state.failures + 1,
+            casualties: state.casualties + state.astronauts,
           };
         }
       }),
