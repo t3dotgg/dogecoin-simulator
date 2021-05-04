@@ -45,7 +45,7 @@ export const MoonPanel: React.FC = () => {
               {new Date(victory.date).toLocaleString()}
             </div>
             <div>Time to complete: {generateTimestamp(victory.ticks / 10)}</div>
-            <div>Max doge: {victory.maxDoge}</div>
+            <div>Max doge: {victory.maxDoge.toFixed(0)}</div>
             <div>Casualties: {victory.casualties}</div>
             <div>Failures: {victory.casualties}</div>
           </div>
