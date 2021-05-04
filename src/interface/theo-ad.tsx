@@ -10,7 +10,7 @@ export const AdForTheo = () => (
       backgroundColor: "white",
       borderBottomLeftRadius: 10,
       border: "2px solid black",
-      zIndex: 1000,
+      zIndex: 100,
     }}
   >
     A dumb game by <a href="https://twitter.com/t3dotgg">Theo</a>
