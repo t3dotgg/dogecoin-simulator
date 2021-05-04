@@ -63,7 +63,7 @@ export const SettingsModal: React.FC<{ closeModal: () => void }> = ({
           href="https://www.decisionproblem.com/paperclips/index2.html"
           target="_blank"
         >
-          Universal Paperclip
+          Universal Paperclips
         </a>
       </div>
       <div style={{ fontSize: 20, fontWeight: "bold", paddingTop: 15 }}>
