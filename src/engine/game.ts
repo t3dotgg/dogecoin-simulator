@@ -63,7 +63,7 @@ export type GameState = CoreGameState & MarketState;
 
 const defaultState: GameState = {
   ticks: 0,
-  phase: 1,
+  phase: 0,
   luck: 0,
   paused: false,
 
@@ -133,7 +133,10 @@ export const useGameStore = createStore(
               ? state.successChance + calculateResearchRate(state) / 10
               : 0,
         };
-        if (state.phase < 2 && state.dogecoin >= 500000) {
+        if (state.phase < 1 && state.dogecoin >= 1) {
+          return { ...sharedUpdate, phase: 1 };
+        }
+        if (state.phase < 2 && state.usd >= 1000) {
           return { ...sharedUpdate, phase: 2 };
         }
         if (
@@ -145,7 +148,6 @@ export const useGameStore = createStore(
         }
         if (
           state.phase < 4 &&
-          state.dogecoin > 10000000 &&
           state.unlocks.includes(Unlocks.SocialMediaManager) &&
           state.unlocks.includes(Unlocks.Incorporate)
         ) {
