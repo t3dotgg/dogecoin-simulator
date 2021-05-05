@@ -228,7 +228,7 @@ export const useGameStore = createStore(
           state.dogePerUSD +
           getRandomFluctuation(state.dogePerUSD, state.phase, {
             // Enable ticks after 10 minutes
-            isLuckEnabled: state.phase > 1,
+            isLuckEnabled: state.ticks > 1000,
             currentLuck: state.luck,
           });
 
