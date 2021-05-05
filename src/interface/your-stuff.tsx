@@ -89,6 +89,15 @@ export const MyStuff: React.FC = () => {
         >
           USD: ${gameStore.usd.toFixed(2)}
         </div>
+        <div
+          style={{
+            fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          Level: {gameStore.phase}
+        </div>
 
         {(gameStore.largeMiners > 0 ||
           gameStore.mediumMiners > 0 ||
