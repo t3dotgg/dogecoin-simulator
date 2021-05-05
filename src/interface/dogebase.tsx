@@ -5,18 +5,18 @@ import { useGameStore } from "../engine/game";
 import { DogePriceChart } from "../common/doge-chart";
 
 const buyButton1Amount = 10;
-const buyButton1Guard = (amount: number) => amount < 100000;
-const buyButton2Amount = 100;
-const buyButton2Guard = (amount: number) => amount > 1000;
-const buyButton3Amount = 1000;
-const buyButton3Guard = (amount: number) => amount > 100000;
+const buyButton1Guard = (amount: number) => amount < 10e4;
+const buyButton2Amount = 10e1;
+const buyButton2Guard = (amount: number) => amount > 10e2;
+const buyButton3Amount = 10e2;
+const buyButton3Guard = (amount: number) => amount > 10e4;
 
-const sellButton1Amount = 10000;
-const sellButton1Guard = (amount: number) => amount < 100000000;
-const sellButton2Amount = 100000;
-const sellButton2Guard = (amount: number) => amount > 1000000;
-const sellButton3Amount = 1000000;
-const sellButton3Guard = (amount: number) => amount > 100000000;
+const sellButton1Amount = 10e3;
+const sellButton1Guard = (amount: number) => amount < 10e7;
+const sellButton2Amount = 10e4;
+const sellButton2Guard = (amount: number) => amount > 10e5;
+const sellButton3Amount = 10e5;
+const sellButton3Guard = (amount: number) => amount > 10e7;
 
 export const DogeBase: React.FC = () => {
   const gameStore = useGameStore();
