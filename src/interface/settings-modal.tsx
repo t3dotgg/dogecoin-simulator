@@ -55,7 +55,10 @@ export const SettingsModal: React.FC<{ closeModal: () => void }> = ({
         About This Game
       </div>
       <div style={{ fontSize: 20 }}>
-        Made by <a href="https://t3.gg">Theo</a>
+        Made by{" "}
+        <a href="https://t3.gg" target="_blank">
+          Theo
+        </a>
       </div>
       <div style={{ fontSize: 20 }}>
         Heavily inspired by{" "}
@@ -64,6 +67,12 @@ export const SettingsModal: React.FC<{ closeModal: () => void }> = ({
           target="_blank"
         >
           Universal Paperclips
+        </a>
+      </div>
+      <div style={{ fontSize: 20 }}>
+        Source available on{" "}
+        <a href="https://github.com/TheoBr/dogecoin-simulator/" target="_blank">
+          Github
         </a>
       </div>
       <div style={{ fontSize: 20, fontWeight: "bold", paddingTop: 15 }}>

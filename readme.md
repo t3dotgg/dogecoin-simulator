@@ -6,7 +6,7 @@ To The Moon!
 
 ## What is this?
 
-A silly game about dogecoin
+A silly game about dogecoin. Heavily inspired by [Universal Paperclips](https://www.decisionproblem.com/paperclips/index2.html)
 
 ## Info
 
