@@ -31,6 +31,7 @@ type CoreGameState = {
   dogecoin: number;
   usd: number;
   maxDogecoin: number; // Peak dogecoin had thusfar (pseudo-progress marker)
+  maxUsd: number; // Peak usd had thusfar (pseudo-progress marker)
 
   // Purchases
   smallMiners: number;
@@ -71,6 +72,7 @@ const defaultState = () =>
     dogecoin: 0,
     usd: 200,
     maxDogecoin: 0,
+    maxUsd: 200,
 
     smallMiners: 0,
     mediumMiners: 0,
@@ -115,7 +117,11 @@ export const useGameStore = createStore(
       set((state) => ({ dogecoin: state.dogecoin + coin })),
     spendCoin: (coin: number) =>
       set((state) => ({ dogecoin: state.dogecoin - coin })),
-    addUSD: (usd: number) => set((state) => ({ usd: state.usd + usd })),
+    addUSD: (usd: number) =>
+      set((state) => ({
+        usd: state.usd + usd,
+        maxUsd: Math.max(state.usd + usd, state.maxUsd),
+      })),
     spendUSD: (usd: number) => set((state) => ({ usd: state.usd - usd })),
 
     addToLuck: (luck: number) => set((state) => ({ luck: state.luck + luck })),
