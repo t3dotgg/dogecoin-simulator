@@ -42,7 +42,7 @@ export const MoonPanel: React.FC = () => {
         }}
       >
         {victories.map((victory, index) => (
-          <div style={{ paddingTop: 10 }}>
+          <div style={{ paddingTop: 10 }} key={index}>
             <div style={{ fontWeight: "bold" }}>Victory #{index + 1}</div>
             <div style={{ fontWeight: 300, fontSize: 12, marginTop: "-3px" }}>
               {new Date(victory.date).toLocaleString()}
