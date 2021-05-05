@@ -195,15 +195,11 @@ export const useGameStore = createStore(
           followers = Math.floor(
             followers + Math.random() * 0.1 * followers + Math.random() * 10
           );
-          if (followers > 100) {
-            luck += 1;
-          }
+          luck += 1;
         }
         if (luckyNumber < 0.2) {
           followers = Math.floor(followers - Math.random() * 0.05 * followers);
-          if (followers > 100) {
-            luck -= 1;
-          }
+          luck -= 1;
         }
         const tweetIDs = [
           Math.floor(Math.random() * GeneratedTweets.length),
