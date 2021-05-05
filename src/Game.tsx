@@ -40,7 +40,6 @@ function Game() {
             className="onlyMobile"
             style={{ paddingTop: "2.5rem", height: 0, width: 10 }}
           />
-          <div>Random</div>
           <MoonPanel />
         </div>
         {/* Extra stuff */}
