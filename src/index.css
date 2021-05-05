@@ -93,6 +93,14 @@ button:disabled {
   }
 }
 
+div {
+  /* Disable text select on buttons */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
 /*
   Only set this flag in safari
   Selector taken from: https://stackoverflow.com/questions/16348489/is-there-a-css-hack-for-safari-only-not-chrome

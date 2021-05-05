@@ -61,54 +61,55 @@ type CoreGameState = {
 
 export type GameState = CoreGameState & MarketState;
 
-const defaultState: GameState = {
-  ticks: 0,
-  phase: 0,
-  luck: 0,
-  paused: false,
+const defaultState = () =>
+  ({
+    ticks: 0,
+    phase: 0,
+    luck: 0,
+    paused: false,
 
-  dogecoin: 0,
-  usd: 200,
-  maxDogecoin: 0,
+    dogecoin: 0,
+    usd: 200,
+    maxDogecoin: 0,
 
-  smallMiners: 0,
-  mediumMiners: 0,
-  largeMiners: 0,
+    smallMiners: 0,
+    mediumMiners: 0,
+    largeMiners: 0,
 
-  realEstate: [],
-  unlocks: [],
+    realEstate: [],
+    unlocks: [],
 
-  tweetCount: 0,
-  twitterFollowers: 0,
-  tweetIDs: [],
+    tweetCount: 0,
+    twitterFollowers: 0,
+    tweetIDs: [],
 
-  // Market stuff
-  ...defaultMarketState(),
+    // Market stuff
+    ...defaultMarketState(),
 
-  // Mission stuff
-  currentMission: null,
-  currentLocation: "earth",
-  engineers: 0,
-  astronauts: 0,
-  successChance: 0,
-  minerAllocation: 0,
-  failures: 0,
-  casualties: 0,
-};
+    // Mission stuff
+    currentMission: null,
+    currentLocation: "earth",
+    engineers: 0,
+    astronauts: 0,
+    successChance: 0,
+    minerAllocation: 0,
+    failures: 0,
+    casualties: 0,
+  } as GameState);
 
 const loadGame = () => {
   const stored = localStorage.getItem(GAME_STORAGE_KEY);
   if (stored) {
     const result = JSON.parse(stored) as Partial<GameState>;
-    return { ...defaultState, ...result, paused: false };
+    return { ...defaultState(), ...result, paused: false };
   }
 
-  return defaultState;
+  return defaultState();
 };
 
 export const useGameStore = createStore(
   combine(loadGame(), (set) => ({
-    resetToDefault: () => set(defaultState),
+    resetToDefault: () => set(defaultState()),
 
     addCoin: (coin: number) =>
       set((state) => ({ dogecoin: state.dogecoin + coin })),

@@ -39,7 +39,7 @@ export const MyStuff: React.FC = () => {
           Much Inventory
           <img
             src="/assets/crappy-gear.svg"
-            style={{ height: "1.5rem" }}
+            style={{ height: "1.5rem", cursor: "pointer" }}
             onClick={() => {
               setResetModalOpen(true);
               gameStore.pause();
