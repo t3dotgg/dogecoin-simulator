@@ -1,48 +1,13 @@
-# Universal Dogecoin
+# Dogecoin Simulator
 
-Heavily inspired by Universal Paperclip
+To The Moon!
 
-## TODO Core Features
+[Play Now](https://doge.t3.gg)
 
-- [x] Local storage
-- [x] Phases
-- [x] DOGE <-> USD
-- [x] Debug panel
-- [x] Price chart
-- [ ] Events
-- [ ] Gambling
+## What is this?
 
-## TODO Niceties
+A silly game about dogecoin
 
-- [ ] Tooltip improvements
-  - Better mobile support (maybe ? button next to text buttons)
-  - Tie closer to button (make custom button component)
-- [x] Better [number ticker](https://css-tricks.com/animating-number-counters/)
-- [ ] "About" page with callouts to open source packages used
-- [ ] "Reset" button
+## Info
 
-## Progression ideas
-
-### Phases
-
-1. Basic mining
-1. Factory mining
-1. Market manipulation
-1. To The Moon!
-1. To Mars
-1. Blow up earth ??
-
-### Phase Breakdowns
-
-#### 3. Market Manipulation
-
-- [ ] Buy smartphone for twitter, add "send tweet" button (with randomized tweets)
-- [ ] Codify market effects from actions
-- [ ] Ability to buy random marketing special event type things
-
-#### 4. To The Moon
-
-- [ ] Re-open DogeEstate to include new properties
-- [ ] Create hiring board for engineers
-- [ ] Lots of meme-y quests to make ship
-- [ ] Possibility for launches to fail with increased likelihood of success as you invest more (maybe show this chance?)
+Tech stack is React + Typescript with a pile of helper tooks such as Zustand, Victory and react-modal. Happy to go more into detail on any of this if there's interest - the Zustand state machine in particular was quite fun :)
