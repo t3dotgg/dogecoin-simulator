@@ -27,6 +27,7 @@ export const DevPanel: React.FC = () => {
       <div style={{ paddingBottom: 10, fontWeight: "bold" }}>Data</div>
       <div>Phase: {gameStore.phase}</div>
       <div>Luck: {gameStore.luck}</div>
+      <div>Ticks: {gameStore.ticks}</div>
       <div style={{ paddingBottom: 10, paddingTop: 10, fontWeight: "bold" }}>
         Cheats
       </div>
