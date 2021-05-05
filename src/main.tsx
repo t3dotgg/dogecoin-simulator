@@ -6,7 +6,9 @@ import Game from "./Game";
 import ReactGA from "react-ga";
 
 if (import.meta.env.PROD) {
-  ReactGA.initialize("UA-25660758-13");
+  ReactGA.initialize("UA-25660758-13", {
+    gaOptions: { siteSpeedSampleRate: 100 },
+  });
   ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
