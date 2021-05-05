@@ -280,6 +280,7 @@ export const useGameStore = createStore(
             failures: state.failures,
             casualties: state.casualties,
           });
+          ReactGA.modalview("/victory");
           ReactGA.event({
             value: state.ticks,
             action: "victory-1.0",
