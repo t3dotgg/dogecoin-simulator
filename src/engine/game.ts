@@ -283,6 +283,7 @@ export const useGameStore = createStore(
           ReactGA.modalview("/victory");
           ReactGA.event({
             value: state.ticks,
+            label: state.ticks.toString(),
             action: "victory-1.0",
             category: "game",
           });
